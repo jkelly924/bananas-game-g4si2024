@@ -19,12 +19,13 @@ func get_difficulty_score(round: int) -> float:
 func spawn_enemy() -> void:
 	print('Spawning enemy')
 	var enemy = enemy_scene.instantiate()
+	enemy.starting_level = 2
 	enemies.add_child(enemy)
 
 
 func begin_round(round: int) -> void:
 	var difficulty: float = get_difficulty_score(round)
-	for i in range(0, difficulty):
+	for i in range(0, 5):
 		await delay(0.5)
 		spawn_enemy()
 
