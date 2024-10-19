@@ -241,7 +241,7 @@ offset = Vector2(1152, 648)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Rounds" type="Node" parent="."]
-script = ExtResource("3_bhpcv")
+script = ExtResource("4_023p8")
 
 [node name="SpawnTimer" type="Timer" parent="Rounds"]
 
