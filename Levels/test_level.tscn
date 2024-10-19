@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=13 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
+[ext_resource type="Script" path="res://Scripts/enemy_handler.gd" id="1_adipd"]
+[ext_resource type="PackedScene" uid="uid://ca03yjxna8b4n" path="res://Entities/Tower.tscn" id="2_yrywt"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
-[ext_resource type="Script" path="res://Levels/tmptest.gd" id="4_y11et"]
 [ext_resource type="Texture2D" uid="uid://bacilhv5jwdwx" path="res://Textures/test_enemy.png" id="5_7y2mf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
@@ -29,7 +30,7 @@ sources/1 = SubResource("TileSetAtlasSource_x8coy")
 [sub_resource type="Curve2D" id="Curve2D_o0ayj"]
 bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -64, 200, 0, 0, 0, 0, 362, 200, 0, 0, 0, 0, 360, 632, 0, 0, 0, 0, 214, 632, 0, 0, 0, 0, 216, 1064, 0, 0, 0, 0, 1078, 1064, 0, 0, 0, 0, 1080, 200, 0, 0, 0, 0, 646, 200, 0, 0, 0, 0, 648, 632, 0, 0, 0, 0, 1510, 632, 0, 0, 0, 0, 1512, 344, 0, 0, 0, 0, 1942, 344, 0, 0, 0, 0, 1944, 1064, 0, 0, 0, 0, 2376, 1064)
+"points": PackedVector2Array(0, 0, 0, 0, -64, 216, 0, 0, 0, 0, 360, 216, 0, 0, 0, 0, 360, 651, 0, 0, 0, 0, 216, 648, 0, 0, 0, 0, 216, 1080, 0, 0, 0, 0, 1080, 1080, 0, 0, 0, 0, 1080, 216, 0, 0, 0, 0, 648, 216, 0, 0, 0, 0, 648, 648, 0, 0, 0, 0, 1512, 648, 0, 0, 0, 0, 1512, 360, 0, 0, 0, 0, 1944, 360, 0, 0, 0, 0, 1944, 1080, 0, 0, 0, 0, 2376, 1080)
 }
 point_count = 14
 
@@ -38,9 +39,13 @@ point_count = 14
 [node name="test_level" type="Node2D"]
 
 [node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("1_adipd")
 
 [node name="Towers" type="Node2D" parent="."]
-scale = Vector2(4.5, 4.5)
+
+[node name="Tower" parent="Towers" instance=ExtResource("2_yrywt")]
+position = Vector2(200, 200)
+damage_range = 10.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -174,7 +179,6 @@ layout_mode = 2
 texture_normal = ExtResource("5_7y2mf")
 stretch_mode = 0
 
-[node name="tmptest" type="Node2D" parent="."]
-script = ExtResource("4_y11et")
-
+[connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
 [connection signal="pressed" from="UI/HUD/StartRound" to="Rounds" method="_on_start_round_pressed"]
