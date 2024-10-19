@@ -8,3 +8,9 @@ signal goldChanged(newGold)
 signal waveStarted(wave_count, enemy_count)
 @warning_ignore("unused_signal")
 signal enemyDestroyed(remain)
+
+var money: int = 100
+
+func give_money(n: int) -> void:
+	money += n
+	goldChanged.emit()

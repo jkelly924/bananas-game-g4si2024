@@ -66,6 +66,11 @@ func weighted_random(enemy_probabilities: Array[float]) -> int:
 	return 0
 
 
+func on_end_of_round() -> void:
+	Globals.money += current_round * 100
+	current_round += 1
+
+
 func begin_round(round: int) -> void:
 	print("Beginning Wave: ", round)
 	round_running = true
@@ -88,7 +93,7 @@ func begin_round(round: int) -> void:
 			await delay(0.5)
 			spawn_enemy(enemy_level)
 	
-	current_round += 1
+	on_end_of_round()
 	round_running = false
 
 # Called when the node enters the scene tree for the first time.
