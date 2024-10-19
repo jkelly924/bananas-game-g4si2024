@@ -7,10 +7,11 @@ var game_data
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var parent: Node2D = self.get_parent()
-	enemies = parent.get_node('Enemies')
-	towers = parent.get_node('Towers')
-	game_data = parent.get_node('GameDataScript')
+	var root_node: Node2D = get_tree().get_root().get_node("Node2D")
+	#var parent: Node2D = self.get_parent()
+	enemies = root_node.get_node('Enemies')
+	towers = root_node.get_node('Towers')
+	game_data = root_node.get_node('GameDataScript')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
