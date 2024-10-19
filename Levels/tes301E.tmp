@@ -44,5 +44,4 @@ zoom = Vector2(4.5, 4.5)
 curve = SubResource("Curve2D_5an0v")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(170.813, 120)
-progress = 330.81
+position = Vector2(0, 24)
