@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="PackedScene" uid="uid://ca03yjxna8b4n" path="res://Entities/Tower.tscn" id="1_61u34"]
-[ext_resource type="Script" path="res://Levels/round_handler.gd" id="4_023p8"]
+[ext_resource type="Script" path="res://Scripts/round_handler.gd" id="4_023p8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
