@@ -7,7 +7,7 @@ var enemies: Node2D
 
 var goal_max_enemies: int = 200
 var sum_enemy_difficulty: int
-var enemy_difficulties: Array[int] = [1, 3, 9]
+var enemy_difficulties: Array[int] = [1, 2, 4]
 
 
 func delay(time: float):
@@ -17,7 +17,7 @@ func delay(time: float):
 
 
 func get_difficulty_score(round: int) -> int:
-	return 5#int(5 * pow(1.2, round - 1))
+	return min(int(6 * pow(1.15, round - 1)), 120) # No more than 120 enemies can be spawned
 
 
 func spawn_enemy(level: int) -> void:
@@ -61,11 +61,12 @@ func weighted_random(enemy_probabilities: Array[float]) -> int:
 		if cumulative_weight >= number:
 			return enemy_level
 	
-	# If no enemy was found (this shouldnt happen), get the last one
+	# This should ideally never be reached, but oh well
 	return 0
 
 
 func begin_round(round: int) -> void:
+	print("Beginning Wave: ", round)
 	var difficulty: int = get_difficulty_score(round)
 	
 	var enemy_counts: Array[int]= Array([], TYPE_INT, "", null)
@@ -84,11 +85,6 @@ func begin_round(round: int) -> void:
 			await delay(0.5)
 			spawn_enemy(enemy_level)
 
-
-func clean_up_round() -> void:
-	pass
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for enemy_level: int in enemy_difficulties.size():
@@ -100,8 +96,3 @@ func _ready() -> void:
 	enemy_scene = preload("res://Entities/Enemy.tscn")
 	
 	begin_round(1)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
