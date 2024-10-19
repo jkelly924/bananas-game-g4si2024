@@ -1,14 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=10 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="PackedScene" uid="uid://ca03yjxna8b4n" path="res://Entities/Tower.tscn" id="1_61u34"]
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://Scripts/round_handler.gd" id="4_023p8"]
-=======
-[ext_resource type="Script" path="res://Levels/round_handler.gd" id="4_023p8"]
+[ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_bhpcv"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
 [ext_resource type="Script" path="res://Levels/tmptest.gd" id="4_y11et"]
->>>>>>> 7359d7e489f8af447b65e9d469fdda0c964743ec
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
@@ -24,6 +20,8 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 40, 24, 0, 0, 0, 0, 40, 72, 0, 0, 0, 0, 72, 72, 0, 0, 0, 0, 72, 40, 0, 0, 0, 0, 120, 40, 0, 0, 0, 0, 120, 120, 0, 0, 0, 0, 200, 120, 0, 0, 0, 0, 200, 56, 0, 0, 0, 0, 256, 56)
 }
 point_count = 10
+
+[sub_resource type="ImageTexture" id="ImageTexture_ija4m"]
 
 [node name="test_level" type="Node2D"]
 
@@ -55,7 +53,7 @@ position = Vector2(170.813, 120)
 progress = 330.81
 
 [node name="Rounds" type="Node" parent="."]
-script = ExtResource("4_023p8")
+script = ExtResource("3_bhpcv")
 
 [node name="SpawnTimer" type="Timer" parent="Rounds"]
 
@@ -117,5 +115,16 @@ unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
+[node name="StartRound" type="Button" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 916.0
+offset_top = -4.0
+offset_right = 1021.0
+offset_bottom = 27.0
+text = "Start Round"
+icon = SubResource("ImageTexture_ija4m")
+
 [node name="tmptest" type="Node2D" parent="."]
 script = ExtResource("4_y11et")
+
+[connection signal="pressed" from="UI/HUD/StartRound" to="Rounds" method="_on_start_round_pressed"]

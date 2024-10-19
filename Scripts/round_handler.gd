@@ -1,5 +1,8 @@
 extends Node
 
+var round_running: bool = false
+var current_round: int = 1
+
 var enemy_scene
 var enemies: Node2D
 
@@ -65,6 +68,8 @@ func weighted_random(enemy_probabilities: Array[float]) -> int:
 
 func begin_round(round: int) -> void:
 	print("Beginning Wave: ", round)
+	round_running = true
+	
 	var difficulty: int = get_difficulty_score(round)
 	
 	var enemy_counts: Array[int]= Array([], TYPE_INT, "", null)
@@ -82,6 +87,9 @@ func begin_round(round: int) -> void:
 		for i: int in range(enemy_counts[enemy_level]):
 			await delay(0.5)
 			spawn_enemy(enemy_level)
+	
+	current_round += 1
+	round_running = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -92,5 +100,8 @@ func _ready() -> void:
 	enemies = root_node.get_node('Enemies')
 	
 	enemy_scene = preload("res://Entities/Enemy.tscn")
-	
-	begin_round(1)
+
+
+func _on_start_round_pressed() -> void:
+	if not round_running:
+		begin_round(current_round)
