@@ -31,6 +31,7 @@ func _ready() -> void:
 	path.add_child(path_follow)
 
 	get_node("AnimatedSprite2D").play()
+	_process(0) # If we dont call this, they will be at the origin for one frame
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,7 +43,7 @@ func _process(delta: float) -> void:
 
 func take_damage(damage: float) -> void:
 	current_health -= damage
-	print(current_level, " ", current_health);
+	#print(current_level, " ", current_health);
 	
 	if current_health < 0:
 		if(current_level > 0):
@@ -51,5 +52,3 @@ func take_damage(damage: float) -> void:
 			get_node("AnimatedSprite2D").animation = str(current_level) + "_walk"
 		else:
 			get_parent().remove_child(self) # Deletes itself when it dies
-
-
