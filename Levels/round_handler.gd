@@ -31,31 +31,24 @@ func spawn_enemy() -> void:
 
 func get_enemy_probabilities(round_number: int):
 	var bias_factor: float = 1 - exp(-float(round_number) / 25)
-	bias_factor *= bias_factor
-	print(bias_factor)
 	
 	var probabilities = {}
 	var total_probability: float = 0
+	var cumulative_difficulty: float = 0
 	for enemy_type: String in enemy_difficulties:
 		var this_difficulty: float = float(enemy_difficulties[enemy_type])
-		# The lower the level we are at, the more likely low-level enemies are.
-		# 1 / this_difficulty makes a smaller distribution for high level enemies
-		# 1 / bias_factor furthers this distribution
-		var low_level_weight: float = (1 / bias_factor) * (1 / this_difficulty)
-		var high_level_weight: float = (1 / (1 - bias_factor)) * this_difficulty
+		cumulative_difficulty += this_difficulty
 		
-		print(enemy_type)
-		print(low_level_weight)
-		print(high_level_weight)
-		
+		var dist = abs(cumulative_difficulty / sum_enemy_difficulty - bias_factor)
+		var low_level_weight: float = (1 / bias_factor) * pow(1 / dist, 2)
+		var high_level_weight: float = (1 / (1 - bias_factor)) * pow(dist, 2)
+
 		probabilities[enemy_type] = low_level_weight + high_level_weight
 		total_probability += probabilities[enemy_type]
 	
 	# Normalize the probabilities
 	for enemy_type: String in enemy_difficulties:
 		probabilities[enemy_type] /= total_probability
-	
-	print(probabilities)
 	
 	return probabilities
 
