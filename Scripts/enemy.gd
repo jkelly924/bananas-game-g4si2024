@@ -50,6 +50,7 @@ func _ready() -> void:
 
 	# Starting animation
 	sprite.play()
+  _process(0) # If we dont call this, they will be at the origin for one frame
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
