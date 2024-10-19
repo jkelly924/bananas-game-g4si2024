@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://qykobsah3dg7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Tower" type="Node2D" parent="."]
