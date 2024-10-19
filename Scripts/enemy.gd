@@ -1,21 +1,18 @@
 extends AnimatedSprite2D
 
+@export var health: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	health = 100.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
 
 func take_damage(damage: float) -> void:
-	var health: float = get_meta("Health")
 	health -= damage
-	if health > 0:
-		set_meta("Health", health)
-	else:
-		# This guy is dead
-		print("DEAD OH MY GOD")
+	
+	if health < 0:
+		print("DIED!")

@@ -23,5 +23,5 @@ func _process(delta: float) -> void:
 			var distance: float = (tower.position - enemy.position).length()
 			if distance < tower_data.range:
 				enemy.take_damage(tower_data.damage)
-				print(enemy.get_meta('Health'))
+				print(enemy.health)
 	
