@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://5x5y38cn4xxm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbvup"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_tbvup")
+metadata/Health = 100.0
