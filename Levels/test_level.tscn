@@ -1,8 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=9 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="PackedScene" uid="uid://ca03yjxna8b4n" path="res://Entities/Tower.tscn" id="1_61u34"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="4_023p8"]
+=======
+[ext_resource type="Script" path="res://Levels/round_handler.gd" id="4_023p8"]
+[ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
+[ext_resource type="Script" path="res://Levels/tmptest.gd" id="4_y11et"]
+>>>>>>> 7359d7e489f8af447b65e9d469fdda0c964743ec
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
@@ -54,3 +60,62 @@ script = ExtResource("4_023p8")
 [node name="SpawnTimer" type="Timer" parent="Rounds"]
 
 [node name="RoundTimer" type="Timer" parent="Rounds"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_jdq3b")
+
+[node name="TurretsPanel" type="PanelContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Turrets" type="HBoxContainer" parent="UI/HUD/TurretsPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -79.0
+offset_bottom = 50.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/VBoxContainer"]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="UI/HUD/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="UI/HUD/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP: 20/20"
+
+[node name="WaveLabel" type="Label" parent="UI/HUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="RemainLabel" type="Label" parent="UI/HUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="tmptest" type="Node2D" parent="."]
+script = ExtResource("4_y11et")
