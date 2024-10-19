@@ -11,9 +11,7 @@ func _ready() -> void:
 	health = 100.0
 	speed = 50
 	
-	var root_node: Node2D = get_tree().get_root().get_node("test_level")
-	
-	path = root_node.get_node("Path2D")
+	path = get_tree().get_root().get_node("test_level").get_node("Path2D")
 	path_follow = PathFollow2D.new()
 	path.add_child(path_follow)
 
