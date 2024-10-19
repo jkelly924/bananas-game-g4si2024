@@ -5,10 +5,8 @@ var enemies: Node2D
 
 @onready var spawn_timer: Timer = $SpawnTimer
 
-var goal_max_enemies: int = 200
 var sum_enemy_difficulty: int
 var enemy_difficulties: Array[int] = [1, 2, 4]
-
 
 func delay(time: float):
 	spawn_timer.wait_time = time
