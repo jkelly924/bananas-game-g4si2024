@@ -26,6 +26,7 @@ func get_difficulty_score(round: int) -> int:
 
 func spawn_enemy() -> void:
 	var enemy = enemy_scene.instantiate()
+	enemy.starting_level = 2
 	enemies.add_child(enemy)
 
 
