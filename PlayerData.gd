@@ -1,9 +1,10 @@
-extends Node2D
+extends Node
 
 @export var money = 69;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("help")
 	pass # Replace with function body.
 
 

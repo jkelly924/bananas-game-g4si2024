@@ -4,3 +4,4 @@
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_tbvup")
+metadata/Health = 100.0
