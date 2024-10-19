@@ -1,4 +1,4 @@
 [gd_scene format=3 uid="uid://ca03yjxna8b4n"]
 
 [node name="Sprite2D" type="Sprite2D"]
-metadata/Type = "Sprinkler"
+metadata/Type = "sprinkler"
