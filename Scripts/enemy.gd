@@ -56,6 +56,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	path_follow.progress += walk_speed * delta
+	z_index = int(position.y)
+	sprite.flip_h = !path_follow.position.x - position.x > 0
 	self.position = path_follow.position
 	progress_bar.position = get_global_transform_with_canvas().get_origin() + progress_bar_offset
 	#print(path_follow.progress)
