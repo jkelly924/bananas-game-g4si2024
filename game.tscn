@@ -1,7 +1,22 @@
-[gd_scene format=3 uid="uid://qykobsah3dg7"]
+[gd_scene load_steps=5 format=3 uid="uid://qykobsah3dg7"]
+
+[ext_resource type="Script" path="res://PlayerData.gd" id="1_g43ky"]
+[ext_resource type="Script" path="res://Towers.gd" id="1_om77g"]
+[ext_resource type="PackedScene" uid="uid://5x5y38cn4xxm" path="res://enemy.tscn" id="2_7hmar"]
+[ext_resource type="PackedScene" uid="uid://ca03yjxna8b4n" path="res://tower.tscn" id="3_qqnfl"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Tower" type="Node2D" parent="."]
+[node name="AnimatedSprite2D" parent="Enemies" instance=ExtResource("2_7hmar")]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="Sprite2D" parent="Towers" instance=ExtResource("3_qqnfl")]
+
+[node name="TowerScript" type="Node" parent="."]
+script = ExtResource("1_om77g")
+
+[node name="PlayerDataScript" type="Node" parent="."]
+script = ExtResource("1_g43ky")
