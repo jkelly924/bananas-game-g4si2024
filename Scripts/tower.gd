@@ -18,4 +18,3 @@ func _process(delta: float) -> void:
 	for enemy: Node2D in owner.get_node("Enemies").get_children(false):
 		if (enemy.position - position).length() < (damage_range * 16):
 			enemy.take_damage(damage_rate * delta)
-			print(enemy.name, " is in range of ", name)
