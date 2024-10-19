@@ -25,6 +25,7 @@ point_count = 10
 
 [node name="Tower" parent="Towers" instance=ExtResource("1_61u34")]
 position = Vector2(56, 24)
+damage_range = 3.0
 
 [node name="Enemies" type="Node2D" parent="."]
 

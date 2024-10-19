@@ -32,3 +32,4 @@ func take_damage(damage: float) -> void:
 	
 	if health < 0:
 		print("DIED!")
+		self.get_parent().remove_child(self)
