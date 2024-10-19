@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 	path_follow.progress += speed * delta
 	self.position = path_follow.position
 	#print(path_follow.progress)
-	
 
 
 func take_damage(damage: float) -> void:
