@@ -1,6 +1,5 @@
 extends Node
 
-
 @export var tower_data = {
 	'sprinkler': {
 		'range': 50,
