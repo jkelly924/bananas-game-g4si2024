@@ -31,12 +31,10 @@ func _process(delta: float) -> void:
 			break
 		
 		last_enemy_index = enemy_index
-		print((enemy.position - position).length())
 		if (enemy.position - position).length() < (damage_range * 144):
 			fired = true
-			print("BAM")
 			enemy.take_damage(damage_rate * delta)
 			break
 	
 	if fired:
-		last_fire_time = Time.get_ticks_msec()
+		last_fire_time = Time.get_ticks_msec() / 1000
