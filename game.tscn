@@ -9,11 +9,9 @@
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Towers" type="Node2D" parent="."]
+script = ExtResource("1_om77g")
 
 [node name="Sprite2D" parent="Towers" instance=ExtResource("3_qqnfl")]
-
-[node name="TowerScript" type="Node" parent="."]
-script = ExtResource("1_om77g")
 
 [node name="GameDataScript" type="Node" parent="."]
 script = ExtResource("5_sptks")
