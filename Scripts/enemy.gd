@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Node2D
 
 @export var health: float
 
@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 func take_damage(damage: float) -> void:
 	health -= damage
+	print(health);
 	
 	if health < 0:
 		print("DIED!")

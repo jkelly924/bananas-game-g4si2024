@@ -12,4 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	for enemy: Node2D in owner.get_node("Enemies").get_children(false):
+		if (enemy.position - position).length() < damage_range:
+			enemy.take_damage(damage_range * delta)
+			print(enemy.name, "is in range of", name)
