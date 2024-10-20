@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbsd4sc7kpyw"]
+[gd_scene load_steps=4 format=3 uid="uid://bbsd4sc7kpyw"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_5mg2p"]
 [ext_resource type="Texture2D" uid="uid://tib4fvkgy4s7" path="res://Textures/MainMenu/base.jpeg" id="2_od3p4"]
+[ext_resource type="AudioStream" uid="uid://skgcarvrdjkr" path="res://UI/hostilearchitecture.wav" id="3_7wrtc"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_5mg2p")
@@ -59,6 +60,10 @@ offset_top = -76.0
 offset_right = 219.0
 grow_vertical = 0
 rotation = -0.174533
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7wrtc")
+autoplay = true
 
 [connection signal="mouse_entered" from="background_image" to="." method="_on_background_image_mouse_entered"]
 [connection signal="mouse_entered" from="play_button" to="." method="_on_play_button_mouse_entered"]
