@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci8kj24kcb808"]
+[gd_scene load_steps=4 format=3 uid="uid://ci8kj24kcb808"]
 
 [ext_resource type="Script" path="res://Levels/win_screem.gd" id="1_wo3jf"]
+[ext_resource type="Texture2D" uid="uid://d0qi82618sk06" path="res://Textures/B8AC3FF0-13F2-429B-93E3-96DF46E38806.png" id="2_33dgt"]
 
 [sub_resource type="GDScript" id="GDScript_inrwq"]
 script/source = "extends Node
@@ -19,30 +20,49 @@ offset_right = 1969.0
 offset_bottom = 1164.0
 color = Color(0.657777, 0.87491, 0.804245, 1)
 
+[node name="TextureRect2" type="TextureRect" parent="ColorRect"]
+offset_left = 1357.0
+offset_top = 641.0
+offset_right = 1820.0
+offset_bottom = 1160.0
+texture = ExtResource("2_33dgt")
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 634.0
+offset_right = 669.0
+offset_bottom = 1153.0
+texture = ExtResource("2_33dgt")
+
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 529.0
-offset_top = 240.0
-offset_right = 1333.0
-offset_bottom = 377.0
+offset_left = 585.0
+offset_top = 105.0
+offset_right = 1389.0
+offset_bottom = 242.0
 theme_override_colors/font_color = Color(0.00280147, 0.46778, 0.365107, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "YOU WIN!!"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = -52.0
-offset_top = 431.0
-offset_right = 1962.0
-offset_bottom = 927.0
-theme_override_colors/font_color = Color(0.00280147, 0.46778, 0.365107, 1)
+offset_left = -1.0
+offset_top = 254.0
+offset_right = 2013.0
+offset_bottom = 750.0
+theme_override_colors/font_color = Color(0.16156, 0.477508, 0.412674, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "By investing in long-term solutions that benefit the unhoused 
 population, you have solved the homelessness crisis in your city once 
 and for all. Due to everyone being able to live comfortably 
-and find jobs, they have reinvested into your city and 
-your tax funds have considerably increased."
+and find jobs, the new citizens have reinvested into your city and your tax
+ funds and all your citizens' quality of life have considerably increased."
 horizontal_alignment = 1
 
 [node name="ExitButton" type="Button" parent="."]
@@ -55,10 +75,10 @@ text = "Exit Game"
 script = SubResource("GDScript_inrwq")
 
 [node name="replayButton" type="Button" parent="."]
-offset_left = 777.0
-offset_top = 846.0
-offset_right = 1053.0
-offset_bottom = 974.0
+offset_left = 831.0
+offset_top = 912.0
+offset_right = 1107.0
+offset_bottom = 1040.0
 theme_override_font_sizes/font_size = 50
 text = "Replay"
 
