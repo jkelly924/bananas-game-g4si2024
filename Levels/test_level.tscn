@@ -311,14 +311,41 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("12_co4c3")
 stretch_mode = 0
 
-[node name="exit_button" type="Button" parent="user_interface"]
-visible = false
-offset_left = 56.0
-offset_top = 49.0
-offset_right = 308.0
-offset_bottom = 126.0
-theme_override_font_sizes/font_size = 50
-text = "Exit Game"
+[node name="remaining_label" type="Label" parent="user_interface"]
+anchors_preset = -1
+anchor_top = 0.988
+anchor_right = 0.15
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Remaining:"
+vertical_alignment = 2
+
+[node name="total_label" type="Label" parent="user_interface"]
+anchors_preset = -1
+anchor_top = 0.94
+anchor_right = 0.15
+anchor_bottom = 0.97
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Total:"
+vertical_alignment = 2
+
+[node name="saved_label" type="Label" parent="user_interface"]
+anchors_preset = -1
+anchor_top = 0.9
+anchor_right = 0.15
+anchor_bottom = 0.94
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Saved:"
+vertical_alignment = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ctc6o")
@@ -344,4 +371,3 @@ stream = ExtResource("14_cprcl")
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
 [connection signal="pressed" from="user_interface/start_button" to="Rounds" method="_on_start_button_pressed"]
-[connection signal="pressed" from="user_interface/exit_button" to="user_interface" method="_on_exit_button_pressed"]

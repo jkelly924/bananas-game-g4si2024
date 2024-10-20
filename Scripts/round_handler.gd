@@ -95,14 +95,18 @@ func begin_round(round: int) -> void:
 	var count: int = TowerHandler.positive_towers
 	for i in range(3):
 		if enemy_counts[i]<=count:
+			total_enemy_count -= enemy_counts[i]
 			count -= enemy_counts[i]
 			enemy_counts[i] = 0
 		else:
+			total_enemy_count -= count
 			enemy_counts[i]-= count
 			count= 0;
 		if count == 0:
 			break
 
+	Globals.total_changed.emit(total_enemy_count)
+	Globals.remaining_changed.emit(total_enemy_count)
 	# win when enemies reach 0
 	if enemy_counts[0] + enemy_counts[1] + enemy_counts[2] == 0:
 		Globals.game_won.emit()

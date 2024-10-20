@@ -10,6 +10,10 @@ signal game_won()
 
 signal final_enemy_death()
 
+signal remaining_changed(remaining: int)
+signal total_changed(total: int)
+signal saved_changed(saved: int)
+
 var tower_information = [
 	{
 		name = "Sprinkler",
@@ -88,6 +92,11 @@ const init_health: int = 10
 
 var budget: int
 var health: int
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.keycode == KEY_ESCAPE:
+			get_tree().quit()
 
 
 func begin_new_game():

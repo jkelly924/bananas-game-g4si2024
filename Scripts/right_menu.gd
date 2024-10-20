@@ -8,15 +8,27 @@ var empty_heart: Texture = load("res://Textures/UI/heart_empty.png")
 @onready var grid_container: GridContainer = $side_panel/MarginContainer/Control/shop_panel/ScrollContainer/GridContainer
 @onready var hearts_group: Control = $side_panel/MarginContainer/Control/hearts
 
+@onready var remaining_label: Label = $remaining_label
+@onready var total_label: Label = $total_label
+@onready var saved_label: Label = $saved_label
+
 var shop_button_scene = load("res://UI/shop_button.tscn")
 
+
+func _on_remaining_changed(remaining: int):
+	remaining_label.text = "Remaining " + str(remaining)
+
+func _on_total_changed(total: int):
+	total_label.text = "Total: " + str(total)
+
+func _on_saved_changed(saved: int):
+	saved_label.text = "Saved: " + str(saved)
 
 func _on_budget_changed(budget: int):
 	budget_label.text = "Budget: $" + str(budget) + "k"
 
 
 func _on_health_changed(health: int):
-	
 	for i: int in range(10):
 		var heart = hearts_group.get_node(str(i)).get_node("TextureRect")
 		if i < health:
@@ -28,11 +40,13 @@ func begin_preview_dragging(tower_id: String) -> void:
 	pass
 
 func _on_shop_button_pressed(tower_id: String):
+	print(tower_id)
+	
 	var tower_information
 	for info in Globals.tower_information:
 		if info.id == tower_id:
 			tower_information = info
-
+	
 	if Globals.budget >= tower_information.price:
 		Globals.award_budget(-tower_information.price)
 		TowerHandler.create_ghost(tower_id)
@@ -46,6 +60,10 @@ func _ready() -> void:
 	
 	_on_budget_changed(Globals.budget)
 	_on_health_changed(Globals.health)
+	
+	Globals.remaining_changed.connect(_on_remaining_changed)
+	Globals.total_changed.connect(_on_total_changed)
+	Globals.saved_changed.connect(_on_saved_changed)
 	
 	for tower_information in Globals.tower_information:
 		var this = shop_button_scene.instantiate()
