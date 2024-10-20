@@ -28,7 +28,14 @@ func _process(delta: float) -> void:
 	if Time.get_ticks_msec() / 1000 - last_fire_time < cooldown:
 		return
 	
-	var enemy: Node = EnemyHandler.get_first_valid_enemy(position, range)
+	var enemies: Array[Node] = EnemyHandler.get_enemies_in_range(position, range)
+	for enemy: Node in enemies:
+		enemy.take_damage(damage)
+	
+	if len(enemies) != 0:
+		last_fire_time = Time.get_ticks_msec() / 1000
+	
+	"""var enemy: Node = EnemyHandler.get_first_valid_enemy(position, range)
 	if enemy:
 		enemy.take_damage(damage)
-		last_fire_time = Time.get_ticks_msec() / 1000
+		last_fire_time = Time.get_ticks_msec() / 1000"""
