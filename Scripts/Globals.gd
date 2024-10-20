@@ -47,40 +47,6 @@ var tower_information = {
 	},
 }
 
-var tower_radius_stats = {
-	"sprinkler": {
-		damage = 1,
-		range = 2,
-		cooldown = 3,
-	},
-	"bullets": {
-		damage = 1,
-		range = 2,
-		cooldown = 3,
-	},
-	"gas": {
-		damage = 1,
-		range = 2,
-		cooldown = 3,
-	},
-	"speaker": {
-		damage = 1,
-		range = 2,
-		cooldown = 3,
-	}
-}
-
-var tower_slowing_stats = {
-	"bench": {
-		range = 1,
-		modifier = 0.33,
-	},
-	"speaker": {
-		range = 2,
-		modifier = 0.33,
-	}
-}
-
 var money: int = 100
 var health: int = 10
 

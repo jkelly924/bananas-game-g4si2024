@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca03yjxna8b4n"]
+[gd_scene load_steps=4 format=3 uid="uid://bsv5uiri4own0"]
 
-[ext_resource type="Script" path="res://Scripts/range_tower.gd" id="1_jolcq"]
-[ext_resource type="Texture2D" uid="uid://dtcvgoly5sskj" path="res://Textures/test_tower.png" id="2_aoa3u"]
+[ext_resource type="Script" path="res://Towers/Scripts/sprinkler.gd" id="1_7pgt6"]
+[ext_resource type="Texture2D" uid="uid://dtcvgoly5sskj" path="res://Textures/test_tower.png" id="2_pdhxr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_buhx0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aoa3u")
+"texture": ExtResource("2_pdhxr")
 }],
 "loop": true,
 "name": &"default",
@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [node name="tower" type="Node2D"]
-script = ExtResource("1_jolcq")
+script = ExtResource("1_7pgt6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

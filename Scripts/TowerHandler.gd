@@ -8,13 +8,14 @@ static var slowing_towers: Array[Node]
 
 func _ready() -> void:
 	towers_node = self
-	create_tower("Radius", "sprinkler", Vector2(100, 100))
+	create_tower("sprinkler", Vector2(100, 100))
+	create_tower("speaker", Vector2(150, 150))
 
 
-# Sample Usage: create_tower("radius", "sprinkler", Vector2(100, 100))
-static func create_tower(type: String, name: String, position: Vector2) -> void:
-	var tower: Node = Tower.create(type, name, position)
+static func create_tower(name: String, position: Vector2) -> void:
+	var tower: Node = load("res://Towers/Scenes/" + name + ".tscn").instantiate()
+	tower.position = position
 	towers_node.add_child(tower)
 	
-	if type == "slowing":
+	if name == "speaker" or name == "bench":
 		slowing_towers.append(tower)

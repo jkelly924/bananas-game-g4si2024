@@ -70,10 +70,9 @@ func _process(delta: float) -> void:
 	
 	var speed_modifier: float = delta
 	for node: Node in TowerHandler.slowing_towers:
-		var distance: float = (self.position - node.transform.position).length()
-		var tower_stats = Globals.tower_slowing_stats[node.tower_name]
-		if distance < tower_stats.range:
-			speed_modifier *= tower_stats[node.tower_name]
+		var distance: float = (self.position - node.position).length()
+		if distance < node.slowing_range:
+			speed_modifier *= node.slowing_modifier
 	
 	path_follow.progress += walk_speed * speed_modifier
 	if path_length - path_follow.progress <= 1:

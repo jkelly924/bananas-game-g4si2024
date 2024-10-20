@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=22 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
+[ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
 [ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_1dmw7"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
@@ -64,7 +65,7 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 [node name="test_level" type="Node2D"]
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource("3_5b40h")
+script = ExtResource("1_utey3")
 
 [node name="Towers" type="Node2D" parent="."]
 script = ExtResource("2_1dmw7")
