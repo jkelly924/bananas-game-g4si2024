@@ -1,6 +1,6 @@
 ## HOSTILE ARCHITECTURE 
 
-a game by Team Bananas
+### a game by Team Bananas
 ------------------------------
 Jayden Kelly -- Main Developer
 
