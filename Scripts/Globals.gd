@@ -8,7 +8,7 @@ signal goldChanged(newGold)
 signal waveStarted(wave_count, enemy_count)
 @warning_ignore("unused_signal")
 signal enemyDestroyed(remain)
-	
+
 var tower_information = {
 	1: {
 		name = "Sprinkler",
@@ -45,9 +45,6 @@ var tower_information = {
 		texture = load("res://Textures/Tower/police/bullet_tower.png"),
 		round_unlocked = 5
 	},
-	6: {
-		name = 
-	}
 }
 
 var tower_radius_stats = {

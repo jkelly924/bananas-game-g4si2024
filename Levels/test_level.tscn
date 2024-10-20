@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=21 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_1dmw7"]
@@ -255,14 +255,6 @@ columns = 2
 custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-
 [node name="shop_button2" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
 custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
@@ -286,6 +278,14 @@ layout_mode = 2
 [node name="shop_button7" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
 custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
