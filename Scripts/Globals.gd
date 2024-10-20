@@ -6,6 +6,7 @@ signal waveStarted(wave_count, enemy_count)
 signal enemyDestroyed(remain)
 
 signal game_over()
+signal game_won()
 
 var tower_information = [
 	{

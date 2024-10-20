@@ -101,7 +101,7 @@ func begin_round(round: int) -> void:
 			break
 	
 	if enemy_counts[2] <= 0:
-		Globals.game_over.emit()
+		Globals.game_won.emit()
 	
 	on_start_of_round(total_enemy_count)
 	
