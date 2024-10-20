@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqogty2lb3oni"]
+
+[ext_resource type="SpriteFrames" uid="uid://c0cond1h8sd3l" path="res://Textures/Tower/spike/spikes.tres" id="1_1yo26"]
+
+[node name="Spikes" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_1yo26")
+frame = 4
+frame_progress = 1.0
