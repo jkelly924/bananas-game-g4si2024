@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=13 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_adipd"]
-[ext_resource type="PackedScene" uid="uid://ca03yjxna8b4n" path="res://Entities/Tower.tscn" id="2_yrywt"]
+[ext_resource type="PackedScene" uid="uid://c86vtxtc67bt7" path="res://Entities/speaker.tscn" id="2_e00ya"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
@@ -37,11 +37,16 @@ point_count = 14
 [sub_resource type="ImageTexture" id="ImageTexture_ija4m"]
 
 [node name="test_level" type="Node2D"]
+position = Vector2(-1933, 117)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("1_adipd")
 
 [node name="Towers" type="Node2D" parent="."]
+
+[node name="Speaker" parent="Towers" instance=ExtResource("2_e00ya")]
+z_index = 1
+position = Vector2(334, 51)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -64,7 +69,6 @@ script = ExtResource("3_5b40h")
 curve = SubResource("Curve2D_o0ayj")
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 3
@@ -177,6 +181,7 @@ texture_normal = ExtResource("5_7y2mf")
 stretch_mode = 0
 
 [node name="user_interface" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="right_panel" type="ColorRect" parent="user_interface"]
 anchors_preset = -1
