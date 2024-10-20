@@ -1,14 +1,21 @@
-[gd_scene load_steps=21 format=4 uid="uid://cam2n3o5ookil"]
+
+[gd_scene load_steps=25 format=4 uid="uid://cam2n3o5ookil"]
+
+[gd_scene load_steps=26 format=4 uid="uid://cam2n3o5ookil"]
+
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
+[ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
 [ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_1dmw7"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
-[ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
+[ext_resource type="PackedScene" uid="uid://c86vtxtc67bt7" path="res://Towers/Scenes/speaker.tscn" id="3_resdl"]
+[ext_resource type="PackedScene" uid="uid://3cjm1picu6xo" path="res://Towers/Scenes/house.tscn" id="4_jqs1v"]
 [ext_resource type="Texture2D" uid="uid://bacilhv5jwdwx" path="res://Textures/test_enemy.png" id="5_7y2mf"]
 [ext_resource type="Texture2D" uid="uid://mcetcdwiyku8" path="res://Textures/UI/background_small.png" id="7_6jwmj"]
 [ext_resource type="Texture2D" uid="uid://7xtgrgtpddoh" path="res://Textures/UI/scrollbar.png" id="7_un8fm"]
-[ext_resource type="PackedScene" uid="uid://dum81wyw83h4l" path="res://UI/shop_button.tscn" id="8_5f4cs"]
+[ext_resource type="Script" path="res://Scripts/right_menu.gd" id="8_ygav1"]
+[ext_resource type="AudioStream" uid="uid://skgcarvrdjkr" path="res://UI/hostilearchitecture.wav" id="11_ctc6o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
@@ -36,6 +43,8 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="GDScript" id="GDScript_g2qhd"]
+
 [sub_resource type="ImageTexture" id="ImageTexture_ija4m"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ahdxx"]
@@ -61,13 +70,29 @@ VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xn1i3")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 
+[sub_resource type="GDScript" id="GDScript_5enli"]
+script/source = "extends Node
+# what is this
+func _on_pressed() -> void:
+	get_tree().quit() # huh??? this is the one that is being used
+"
+
 [node name="test_level" type="Node2D"]
+position = Vector2(-1933, 117)
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource("3_5b40h")
+script = ExtResource("1_utey3")
 
 [node name="Towers" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(334, 51)
 script = ExtResource("2_1dmw7")
+
+[node name="Speaker" parent="Towers" instance=ExtResource("3_resdl")]
+position = Vector2(208, 1516)
+
+[node name="Node2D" parent="Towers" instance=ExtResource("4_jqs1v")]
+position = Vector2(1088, 638)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -101,7 +126,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("4_jdq3b")
+script = SubResource("GDScript_g2qhd")
 
 [node name="TurretsPanel" type="PanelContainer" parent="UI/HUD"]
 visible = false
@@ -207,6 +232,7 @@ texture_normal = ExtResource("5_7y2mf")
 stretch_mode = 0
 
 [node name="user_interface" type="CanvasLayer" parent="."]
+script = ExtResource("8_ygav1")
 
 [node name="side_panel" type="NinePatchRect" parent="user_interface"]
 texture_filter = 1
@@ -222,20 +248,41 @@ patch_margin_top = 218
 patch_margin_right = 199
 patch_margin_bottom = 209
 
-[node name="shop_panel" type="ColorRect" parent="user_interface/side_panel"]
+[node name="MarginContainer" type="MarginContainer" parent="user_interface/side_panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.333
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="user_interface/side_panel/MarginContainer"]
+layout_mode = 2
+
+[node name="budget_label" type="Label" parent="user_interface/side_panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.05
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Budget: 12.0k"
+
+[node name="shop_panel" type="ColorRect" parent="user_interface/side_panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.2376, 0.29676, 0.36, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="user_interface/side_panel/shop_panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="user_interface/side_panel/MarginContainer/Control/shop_panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -245,39 +292,11 @@ grow_vertical = 2
 theme = SubResource("Theme_prv8g")
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="user_interface/side_panel/shop_panel/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="user_interface/side_panel/MarginContainer/Control/shop_panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 columns = 2
-
-[node name="shop_button" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(212, 212)
-layout_mode = 2
-
-[node name="shop_button2" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(212, 212)
-layout_mode = 2
-
-[node name="shop_button3" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(212, 212)
-layout_mode = 2
-
-[node name="shop_button4" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(212, 212)
-layout_mode = 2
-
-[node name="shop_button5" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(212, 212)
-layout_mode = 2
-
-[node name="shop_button6" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(212, 212)
-layout_mode = 2
-
-[node name="shop_button7" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(212, 212)
-layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
 anchors_preset = 11
@@ -287,6 +306,20 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 56.0
+offset_top = 49.0
+offset_right = 308.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 50
+text = "Exit Game"
+script = SubResource("GDScript_5enli")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ctc6o")
+autoplay = true
+
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
 [connection signal="pressed" from="UI/HUD/StartRound" to="Rounds" method="_on_start_round_pressed"]
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]

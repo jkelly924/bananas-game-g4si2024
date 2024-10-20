@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dotk4hgh0imff"]
+
+[ext_resource type="Script" path="res://Levels/win_screem.gd" id="1_pf60l"]
+
+[sub_resource type="GDScript" id="GDScript_inrwq"]
+script/source = "extends Node
+# what is this
+func _on_pressed() -> void:
+	get_tree().quit() # huh??? this is the one that is being used
+"
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_pf60l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -47.0
+offset_top = -66.0
+offset_right = 1969.0
+offset_bottom = 1164.0
+color = Color(0.931881, 0.773585, 0.79688, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 601.0
+offset_top = 216.0
+offset_right = 1405.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0.701682, 0.141144, 0.303083, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "TRY AGAIN :("
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 391.0
+offset_right = 2032.0
+offset_bottom = 887.0
+theme_override_colors/font_color = Color(0.645845, 0.223596, 0.362134, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Despite your efforts to remove the unhoused population from your city,
+your band-aid defenses only temporarily work before even more of 
+them appear. Your city deteriorates as you spend your citizens'
+tax dollars on hostile architecture that do little to fix this problem.
+Perhaps there is a better, more long-term solution that may be reached...?"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 45.0
+offset_top = 40.0
+offset_right = 297.0
+offset_bottom = 117.0
+theme_override_font_sizes/font_size = 50
+text = "Exit Game"
+script = SubResource("GDScript_inrwq")
+
+[node name="replayButton" type="Button" parent="."]
+offset_left = 806.0
+offset_top = 813.0
+offset_right = 1082.0
+offset_bottom = 941.0
+theme_override_font_sizes/font_size = 50
+text = "Replay"
+
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="replayButton" to="." method="_on_replay_button_pressed"]
