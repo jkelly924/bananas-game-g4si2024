@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=22 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
-[ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_adipd"]
-[ext_resource type="Script" path="res://Levels/TowerHandler.gd" id="2_qfpjj"]
+[ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_1dmw7"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
@@ -33,7 +32,7 @@ sources/1 = SubResource("TileSetAtlasSource_x8coy")
 [sub_resource type="Curve2D" id="Curve2D_o0ayj"]
 bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -64, 200, 0, 0, 0, 0, 362, 200, 0, 0, 0, 0, 360, 632, 0, 0, 0, 0, 214, 632, 0, 0, 0, 0, 216, 1064, 0, 0, 0, 0, 1078, 1064, 0, 0, 0, 0, 1080, 200, 0, 0, 0, 0, 646, 200, 0, 0, 0, 0, 648, 632, 0, 0, 0, 0, 1510, 632, 0, 0, 0, 0, 1512, 344, 0, 0, 0, 0, 1942, 344, 0, 0, 0, 0, 1944, 1064, 0, 0, 0, 0, 2376, 1064)
+"points": PackedVector2Array(0, 0, 0, 0, -106.669, 333.34, 0, 0, 0, 0, 603.345, 333.34, 0, 0, 0, 0, 600.012, 1053.35, 0, 0, 0, 0, 356.674, 1053.35, 0, 0, 0, 0, 360.007, 1773.37, 0, 0, 0, 0, 1796.7, 1773.37, 0, 0, 0, 0, 1800.04, 333.34, 0, 0, 0, 0, 1076.69, 333.34, 0, 0, 0, 0, 1080.02, 1053.35, 0, 0, 0, 0, 2516.72, 1053.35, 0, 0, 0, 0, 2520.05, 573.345, 0, 0, 0, 0, 3236.73, 573.345, 0, 0, 0, 0, 3240.06, 1773.37, 0, 0, 0, 0, 3960.08, 1773.37)
 }
 point_count = 14
 
@@ -66,10 +65,10 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 position = Vector2(-1933, 117)
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource("1_adipd")
+script = ExtResource("3_5b40h")
 
 [node name="Towers" type="Node2D" parent="."]
-script = ExtResource("2_qfpjj")
+script = ExtResource("2_1dmw7")
 
 [node name="Speaker" parent="Towers" instance=ExtResource("2_e00ya")]
 z_index = 1
@@ -95,10 +94,10 @@ script = ExtResource("3_5b40h")
 visible = false
 
 [node name="Path2D" type="Path2D" parent="."]
-scale = Vector2(1.667, 1.667)
 curve = SubResource("Curve2D_o0ayj")
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 3
@@ -214,7 +213,6 @@ texture_normal = ExtResource("5_7y2mf")
 stretch_mode = 0
 
 [node name="user_interface" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="side_panel" type="NinePatchRect" parent="user_interface"]
 texture_filter = 1
@@ -245,24 +243,54 @@ color = Color(0.2376, 0.29676, 0.36, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="user_interface/side_panel/shop_panel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_prv8g")
-scroll_vertical_custom_step = 10.0
+horizontal_scroll_mode = 0
 
 [node name="GridContainer" type="GridContainer" parent="user_interface/side_panel/shop_panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-theme_override_constants/h_separation = 6
-theme_override_constants/v_separation = 6
 columns = 2
 
 [node name="shop_button" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="shop_button2" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
+custom_minimum_size = Vector2(212, 212)
+layout_mode = 2
+
+[node name="shop_button3" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
+custom_minimum_size = Vector2(212, 212)
+layout_mode = 2
+
+[node name="shop_button4" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
+custom_minimum_size = Vector2(212, 212)
+layout_mode = 2
+
+[node name="shop_button5" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
+custom_minimum_size = Vector2(212, 212)
+layout_mode = 2
+
+[node name="shop_button6" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
+custom_minimum_size = Vector2(212, 212)
+layout_mode = 2
+
+[node name="shop_button7" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
