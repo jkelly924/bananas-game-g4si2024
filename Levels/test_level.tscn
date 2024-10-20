@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=26 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
@@ -9,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://7xtgrgtpddoh" path="res://Textures/UI/scrollbar.png" id="7_un8fm"]
 [ext_resource type="Script" path="res://Scripts/right_menu.gd" id="8_ygav1"]
 [ext_resource type="AudioStream" uid="uid://skgcarvrdjkr" path="res://UI/hostilearchitecture.wav" id="11_ctc6o"]
+[ext_resource type="Script" path="res://Scripts/SoundHandler.gd" id="12_5qpt2"]
 [ext_resource type="Texture2D" uid="uid://tls02dcggskq" path="res://Textures/UI/heart.png" id="12_333s4"]
 [ext_resource type="Texture2D" uid="uid://b0buytnhqsshw" path="res://Textures/UI/start.png" id="12_co4c3"]
+[ext_resource type="AudioStream" uid="uid://be43bdiojrdlo" path="res://Sounds/hurt.mp3" id="13_pvvko"]
+[ext_resource type="AudioStream" uid="uid://dfocsor5yjqjh" path="res://Sounds/game_over.mp3" id="14_cprcl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
@@ -328,6 +331,23 @@ script = SubResource("GDScript_5enli")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ctc6o")
 autoplay = true
+
+[node name="SoundHandler" type="Node" parent="."]
+script = ExtResource("12_5qpt2")
+
+[node name="hurt_audio_stream_player" type="AudioStreamPlayer" parent="SoundHandler"]
+stream = ExtResource("13_pvvko")
+
+[node name="gain_money_audio_stream_player" type="AudioStreamPlayer" parent="SoundHandler"]
+stream = ExtResource("13_pvvko")
+
+[node name="game_over_audio_stream_player" type="AudioStreamPlayer" parent="SoundHandler"]
+stream = ExtResource("14_cprcl")
+
+[node name="game_won_audio_stream_player" type="AudioStreamPlayer" parent="SoundHandler"]
+stream = ExtResource("14_cprcl")
+
+[node name="background_audio_stream_player" type="AudioStreamPlayer" parent="SoundHandler"]
 
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]

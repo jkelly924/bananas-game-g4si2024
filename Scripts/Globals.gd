@@ -90,6 +90,7 @@ var health: int = 10
 func award_budget(n: int) -> void:
 	budget += n
 	budget_changed.emit(budget)
+	SoundHandler.play_gain_money_sound()
 
 
 func take_damage() -> void:
@@ -98,3 +99,5 @@ func take_damage() -> void:
 	
 	if health <= 0:
 		game_over.emit()
+	else:
+		SoundHandler.play_hurt_sound()

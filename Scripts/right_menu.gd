@@ -11,8 +11,8 @@ var empty_heart: Texture = load("res://Textures/UI/heart_empty.png")
 var shop_button_scene = load("res://UI/shop_button.tscn")
 
 
-func _on_budget_changed():
-	budget_label.text = "Tax Dollars: " + str(Globals.budget)
+func _on_budget_changed(budget: int):
+	budget_label.text = "Tax Dollars: " + str(budget)
 
 # lose screen 
 var lose_screen = preload("res://Levels/lose_screen.tscn").instantiate()
@@ -20,6 +20,7 @@ func _on_game_lost():
 	get_tree().current_scene.add_child(lose_screen)
 
 func _on_health_changed(health: int):
+
 	for i in range(10, health, -1):
 		if health == 0:
 			#get_tree().change_scene_to_file("res://Levels/lose_screen.tscn")
@@ -29,6 +30,12 @@ func _on_health_changed(health: int):
 		var heart = hearts_group.get_node(str(i - 1)).get_node("TextureRect")
 		heart.texture = empty_heart
 	
+	#for i: int in range(10):
+	#	var heart = hearts_group.get_node(str(i)).get_node("TextureRect")
+	#	if i < health:
+	#		heart.texture = full_heart
+	#	else:
+	#		heart.texture = empty_heart
 
 func begin_preview_dragging(tower_id: String) -> void:
 	pass
@@ -44,6 +51,9 @@ func _on_shop_button_pressed(tower_id: String):
 func _ready() -> void:
 	Globals.budget_changed.connect(_on_budget_changed)
 	Globals.health_changed.connect(_on_health_changed)
+	
+	_on_budget_changed(Globals.budget)
+	_on_health_changed(Globals.health)
 	
 	for tower_information in Globals.tower_information:
 		var this = shop_button_scene.instantiate()
