@@ -88,9 +88,22 @@ func begin_round(round: int) -> void:
 			difficulty -= enemy_difficulties[enemy_level]
 			total_enemy_count += 1
 			enemy_counts[enemy_level] += 1
-	
-	total_enemy_count -= TowerHandler.positive_towers
-	if total_enemy_count <= 0:
+		
+	var count: int = TowerHandler.positive_towers
+	for i in range(2):
+		if enemy_counts[i]<=count:
+			count -= enemy_counts[i]
+			enemy_counts[i] = 0
+		else:
+			enemy_counts[i]-= count
+			count= 0;
+		if count == 0:
+			break
+		
+		
+		
+	if enemy_counts[2] <= 0:
+		pass
 		# Vanessa put the end transition here 
 	
 	

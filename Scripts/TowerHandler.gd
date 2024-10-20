@@ -12,7 +12,7 @@ func _ready() -> void:
 	towers_node = self
 	#create_tower("sprinkler", Vector2(100, 100))
 	#create_tower("speaker", Vector2(150, 150))
-	create_tower("house", Vector2(150, 150))
+	create_tower("bench", Vector2(150, 150))
 
 
 static func create_tower(name: String, position: Vector2) -> void:
