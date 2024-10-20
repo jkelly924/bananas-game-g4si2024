@@ -9,7 +9,7 @@ static var enemies_node: Node
 
 
 func _ready():
-	enemies_node = get_tree().get_root().get_node("test_level").get_node("Enemies")
+	enemies_node = self
 
 
 static func create_enemy(level: int, place: int) -> Node:
