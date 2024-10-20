@@ -64,7 +64,7 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 [node name="test_level" type="Node2D"]
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource("1_adipd")
+script = ExtResource("3_5b40h")
 
 [node name="Towers" type="Node2D" parent="."]
 script = ExtResource("2_1dmw7")
