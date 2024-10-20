@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
 [ext_resource type="Texture2D" uid="uid://bacilhv5jwdwx" path="res://Textures/test_enemy.png" id="5_7y2mf"]
+[ext_resource type="Texture2D" uid="uid://mcetcdwiyku8" path="res://Textures/UI/background_small.png" id="7_6jwmj"]
 [ext_resource type="Texture2D" uid="uid://7xtgrgtpddoh" path="res://Textures/UI/scrollbar.png" id="7_un8fm"]
 [ext_resource type="PackedScene" uid="uid://dum81wyw83h4l" path="res://UI/shop_button.tscn" id="8_5f4cs"]
 
@@ -88,6 +89,7 @@ script = ExtResource("3_5b40h")
 [node name="RoundTimer" type="Timer" parent="Rounds"]
 
 [node name="Path2D" type="Path2D" parent="."]
+scale = Vector2(1.667, 1.667)
 curve = SubResource("Curve2D_o0ayj")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -208,29 +210,34 @@ stretch_mode = 0
 [node name="user_interface" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="right_panel" type="ColorRect" parent="user_interface"]
+[node name="side_panel" type="NinePatchRect" parent="user_interface"]
+texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
-color = Color(0.1914, 0.2407, 0.29, 1)
+texture = ExtResource("7_6jwmj")
+patch_margin_left = 201
+patch_margin_top = 218
+patch_margin_right = 199
+patch_margin_bottom = 209
 
-[node name="shop_panel" type="ColorRect" parent="user_interface/right_panel"]
+[node name="shop_panel" type="ColorRect" parent="user_interface/side_panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.333
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_right = -8.0
-offset_bottom = -8.0
+offset_left = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.2376, 0.29676, 0.36, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="user_interface/right_panel/shop_panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="user_interface/side_panel/shop_panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,7 +247,7 @@ grow_vertical = 2
 theme = SubResource("Theme_prv8g")
 scroll_vertical_custom_step = 10.0
 
-[node name="GridContainer" type="GridContainer" parent="user_interface/right_panel/shop_panel/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="user_interface/side_panel/shop_panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -248,10 +255,11 @@ theme_override_constants/h_separation = 6
 theme_override_constants/v_separation = 6
 columns = 2
 
-[node name="shop_button" parent="user_interface/right_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
+[node name="shop_button" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 
+<<<<<<< HEAD
 [node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
 anchors_preset = 11
 anchor_left = 1.0
@@ -260,6 +268,8 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 
+=======
+>>>>>>> b9a8a2e4ffc3c561b2740f28531ad88b39599105
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
 [connection signal="pressed" from="UI/HUD/StartRound" to="Rounds" method="_on_start_round_pressed"]
