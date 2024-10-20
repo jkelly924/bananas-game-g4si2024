@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=24 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
 [ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_1dmw7"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
+[ext_resource type="PackedScene" uid="uid://c86vtxtc67bt7" path="res://Towers/Scenes/speaker.tscn" id="3_resdl"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
 [ext_resource type="Texture2D" uid="uid://bacilhv5jwdwx" path="res://Textures/test_enemy.png" id="5_7y2mf"]
 [ext_resource type="Texture2D" uid="uid://mcetcdwiyku8" path="res://Textures/UI/background_small.png" id="7_6jwmj"]
@@ -79,6 +80,9 @@ script = ExtResource("1_utey3")
 z_index = 1
 position = Vector2(334, 51)
 script = ExtResource("2_1dmw7")
+
+[node name="Speaker" parent="Towers" instance=ExtResource("3_resdl")]
+position = Vector2(208, 1516)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
