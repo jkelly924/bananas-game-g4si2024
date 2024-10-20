@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=29 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
@@ -41,6 +41,9 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="SystemFont" id="SystemFont_pn8fq"]
+font_names = PackedStringArray("Comic Sans MS")
+
 [sub_resource type="ImageTexture" id="ImageTexture_ahdxx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ygul"]
@@ -63,6 +66,15 @@ VScrollBar/styles/grabber = SubResource("StyleBoxTexture_8ygul")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xn1i3")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
+
+[sub_resource type="SystemFont" id="SystemFont_arxvr"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_p3tre"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="SystemFont" id="SystemFont_rbyih"]
+font_names = PackedStringArray("Comic Sans MS")
 
 [node name="test_level" type="Node2D"]
 
@@ -133,8 +145,10 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.05
 grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_pn8fq")
 theme_override_font_sizes/font_size = 40
 text = "Budget: 12.0k"
+horizontal_alignment = 1
 
 [node name="shop_panel" type="ColorRect" parent="user_interface/side_panel/MarginContainer/Control"]
 layout_mode = 1
@@ -311,41 +325,39 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("12_co4c3")
 stretch_mode = 0
 
+[node name="wave_label" type="Label" parent="user_interface"]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.08
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_arxvr")
+theme_override_font_sizes/font_size = 64
+text = "0 / 0"
+horizontal_alignment = 1
+
 [node name="remaining_label" type="Label" parent="user_interface"]
 anchors_preset = -1
-anchor_top = 0.988
-anchor_right = 0.15
-anchor_bottom = 1.0
-offset_top = -23.0
+anchor_left = 0.25
+anchor_top = 0.08
+anchor_right = 0.5
+anchor_bottom = 0.16
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 25
-text = "Remaining:"
-vertical_alignment = 2
+theme_override_fonts/font = SubResource("SystemFont_p3tre")
+theme_override_font_sizes/font_size = 32
+text = "Remaining: 00.0 M"
+horizontal_alignment = 1
 
-[node name="total_label" type="Label" parent="user_interface"]
+[node name="round_label" type="Label" parent="user_interface"]
 anchors_preset = -1
-anchor_top = 0.94
-anchor_right = 0.15
-anchor_bottom = 0.97
-offset_top = -23.0
+anchor_right = 0.25
+anchor_bottom = 0.08
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 25
-text = "Total:"
-vertical_alignment = 2
-
-[node name="saved_label" type="Label" parent="user_interface"]
-anchors_preset = -1
-anchor_top = 0.9
-anchor_right = 0.15
-anchor_bottom = 0.94
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 25
-text = "Saved:"
-vertical_alignment = 2
+theme_override_fonts/font = SubResource("SystemFont_rbyih")
+theme_override_font_sizes/font_size = 64
+text = "Round 0"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ctc6o")

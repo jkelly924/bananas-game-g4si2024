@@ -9,23 +9,26 @@ var empty_heart: Texture = load("res://Textures/UI/heart_empty.png")
 @onready var hearts_group: Control = $side_panel/MarginContainer/Control/hearts
 
 @onready var remaining_label: Label = $remaining_label
-@onready var total_label: Label = $total_label
-@onready var saved_label: Label = $saved_label
+@onready var wave_label: Label = $wave_label
+@onready var round_label: Label = $round_label
 
 var shop_button_scene = load("res://UI/shop_button.tscn")
 
+var wave_total: int
 
 func _on_remaining_changed(remaining: int):
-	remaining_label.text = "Remaining " + str(remaining)
+	wave_label.text = str(remaining) + " / " + str(wave_total)
 
-func _on_total_changed(total: int):
-	total_label.text = "Total: " + str(total)
-
-func _on_saved_changed(saved: int):
-	saved_label.text = "Saved: " + str(saved)
+func _on_total_changed(new_total: float):
+	remaining_label.text = "Remaining: " + str(new_total) + 'k'
 
 func _on_budget_changed(budget: int):
 	budget_label.text = "Budget: $" + str(budget) + "k"
+
+func _on_round_start(round_number: int, num_enemies: int):
+	round_label.text = "Round: " + str(round_number)
+	wave_total = num_enemies
+	_on_remaining_changed(wave_total)
 
 
 func _on_health_changed(health: int):
@@ -63,7 +66,9 @@ func _ready() -> void:
 	
 	Globals.remaining_changed.connect(_on_remaining_changed)
 	Globals.total_changed.connect(_on_total_changed)
-	Globals.saved_changed.connect(_on_saved_changed)
+	Globals.round_started.connect(_on_round_start)
+
+	_on_total_changed(Globals.num_homeless)
 	
 	for tower_information in Globals.tower_information:
 		var this = shop_button_scene.instantiate()

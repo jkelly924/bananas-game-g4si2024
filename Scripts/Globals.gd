@@ -12,7 +12,10 @@ signal final_enemy_death()
 
 signal remaining_changed(remaining: int)
 signal total_changed(total: int)
-signal saved_changed(saved: int)
+signal round_started(total: int)
+signal saved(saved: int)
+
+var num_homeless: float = 1000.0 # Thousands, so 1 Million.
 
 var tower_information = [
 	{
@@ -87,11 +90,15 @@ var tower_information = [
 	}
 ]
 
-const init_budget: int = 100
+const init_budget: int = 500
 const init_health: int = 10
 
 var budget: int
 var health: int
+
+func _on_saved(num_saved: int):
+	num_homeless -= num_saved
+	total_changed.emit(num_homeless)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -111,6 +118,7 @@ func _ready():
 	begin_new_game()
 	game_won.connect(_on_game_won)
 	game_over.connect(_on_game_over)
+	saved.connect(_on_saved)
 
 
 func _on_game_over():

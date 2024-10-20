@@ -105,8 +105,7 @@ func begin_round(round: int) -> void:
 		if count == 0:
 			break
 
-	Globals.total_changed.emit(total_enemy_count)
-	Globals.remaining_changed.emit(total_enemy_count)
+	Globals.round_started.emit(round, total_enemy_count)
 	# win when enemies reach 0
 	if enemy_counts[0] + enemy_counts[1] + enemy_counts[2] == 0:
 		Globals.game_won.emit()

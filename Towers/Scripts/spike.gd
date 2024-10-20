@@ -8,8 +8,8 @@ extends Node2D
 
 
 var damage: float = 10
-var range: float = 2
-var cooldown: float = 2
+var dist_range: float = 2
+var cooldown: float = 1
 
 var last_fire_time: float = 0
 
@@ -18,8 +18,13 @@ var last_fire_time: float = 0
 func _ready() -> void:
 	#sprite.play("blare")
 	_process(0)
+	Globals.round_started.connect(rearm)
 
-var health: int = 5
+var health: int = 10
+
+func rearm():
+	damage = 10
+	health = 10
 
 func harmless():
 	damage = 0
@@ -33,15 +38,14 @@ func _process(delta: float) -> void:
 	if Time.get_ticks_msec() / 1000 - last_fire_time < cooldown:
 		return
 	
-	var enemy: Node = EnemyHandler.get_first_valid_enemy(position, range)
+	var enemy: Node = EnemyHandler.get_first_valid_enemy(position, dist_range)
 	if enemy:
 		enemy.take_damage(damage)
 		last_fire_time = Time.get_ticks_msec() / 1000
 		
 		# spike health
 		health -= 1
-		if health < 0:
+		if health == 0:
 			print("spike is now harmless")
 			harmless()
 			sprite.play()
-			
