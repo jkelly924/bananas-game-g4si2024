@@ -13,5 +13,6 @@ Vanessa Hong -- Artist and Developer
 Alli Batell -- Artist and Developer
 
 Brayden Yan -- Sound Designer and Developer
+
 ------------------------------------------------
 Created for Games For Social Impact 2024 Game Jam 
