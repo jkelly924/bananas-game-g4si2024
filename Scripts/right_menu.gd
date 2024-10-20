@@ -3,11 +3,13 @@ extends CanvasLayer
 var full_heart: Texture = load("res://Textures/UI/heart.png")
 var empty_heart: Texture = load("res://Textures/UI/heart_empty.png")
 
+@onready var preview: AspectRatioContainer = $preview
 @onready var budget_label: Label = $side_panel/MarginContainer/Control/budget_label
 @onready var grid_container: GridContainer = $side_panel/MarginContainer/Control/shop_panel/ScrollContainer/GridContainer
 @onready var hearts_group: Control = $side_panel/MarginContainer/Control/hearts
 
 var shop_button_scene = load("res://UI/shop_button.tscn")
+
 
 func _on_budget_changed():
 	budget_label.text = "Tax Dollars: " + str(Globals.budget)
@@ -17,6 +19,11 @@ func _on_health_changed(health: int):
 	for i in range(10, health, -1):
 		var heart = hearts_group.get_node(str(i - 1)).get_node("TextureRect")
 		heart.texture = empty_heart
+
+
+func begin_preview_dragging(tower_id: String) -> void:
+	pass
+
 
 
 func _on_shop_button_pressed(tower_id: String):
