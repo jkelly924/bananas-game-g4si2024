@@ -23,3 +23,12 @@ static func create_tower(name: String, position: Vector2) -> void:
 		
 	if name == "house":
 		positive_towers +=10;
+	if name == "shelter":
+		positive_towers +=5;
+		
+	if name == "food":
+		positive_towers +=3;
+	if name == "tent":
+		positive_towers +=1;
+		
+		
