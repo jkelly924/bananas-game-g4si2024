@@ -259,7 +259,6 @@ columns = 2
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 
-<<<<<<< HEAD
 [node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
 anchors_preset = 11
 anchor_left = 1.0
@@ -268,8 +267,6 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 
-=======
->>>>>>> b9a8a2e4ffc3c561b2740f28531ad88b39599105
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
 [connection signal="pressed" from="UI/HUD/StartRound" to="Rounds" method="_on_start_round_pressed"]
