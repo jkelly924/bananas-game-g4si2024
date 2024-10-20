@@ -4,7 +4,7 @@ class_name Enemy
 static var path: Path2D
 static var path_length: float
 
-var ws: float = 1600
+var ws: float = 130
 
 @export var level_0_health: float = 50
 @export var level_1_health: float = 100
@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 			speed *= node.slowing_modifier
 	
 
-	# path_follow.progress += 250 * speed_modifier
+	#path_follow.progress += 250 * speed_modifier
 
 	path_follow.progress += speed
 

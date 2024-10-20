@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://3cjm1picu6xo"]
+[gd_scene load_steps=3 format=3 uid="uid://bvndwmmitbat3"]
 
 [ext_resource type="Texture2D" uid="uid://dpabuqtoonhyr" path="res://Textures/Tower/houses.png" id="1_8otkc"]
 [ext_resource type="Script" path="res://Towers/Scripts/house.gd" id="1_itq62"]

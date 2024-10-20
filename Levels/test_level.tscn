@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=24 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
