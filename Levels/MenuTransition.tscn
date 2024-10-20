@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bos06sfnxk3l1"]
+[gd_scene load_steps=5 format=3 uid="uid://bos06sfnxk3l1"]
 
 [ext_resource type="Script" path="res://Scripts/menu_transition.gd" id="1_eyj77"]
 [ext_resource type="AudioStream" uid="uid://skgcarvrdjkr" path="res://UI/hostilearchitecture.wav" id="2_ddv4d"]
 
-[sub_resource type="SystemFont" id="SystemFont_rui00"]
-font_names = PackedStringArray("Comic Sans MS")
-
-[sub_resource type="LabelSettings" id="LabelSettings_ll7y7"]
-font = SubResource("SystemFont_rui00")
-font_size = 128
+[sub_resource type="LabelSettings" id="LabelSettings_yhs33"]
+font_size = 65
 
 [sub_resource type="GDScript" id="GDScript_etlcp"]
 script/source = "extends Node
@@ -28,75 +24,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="0" type="Label" parent="ColorRect"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "These are the end times..."
-label_settings = SubResource("LabelSettings_ll7y7")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 120.0
+offset_right = 1849.0
+offset_bottom = 768.0
+text = "Addressed To: <YOU>
+From: <HIGHER UPS>
 
-[node name="1" type="Label" parent="ColorRect"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "The homeless have taken over"
-label_settings = SubResource("LabelSettings_ll7y7")
-horizontal_alignment = 1
-vertical_alignment = 1
+Good morning, <EMPLOYEE>. There seems to be no end to 
+the surge of homeless people in our city. 
+Your task is to solve this problem.
+Good luck.
 
-[node name="2" type="Label" parent="ColorRect"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "We humans are outnumbered"
-label_settings = SubResource("LabelSettings_ll7y7")
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="3" type="Label" parent="ColorRect"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "YOU are our last hope"
-label_settings = SubResource("LabelSettings_ll7y7")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="4" type="Label" parent="ColorRect"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "DEAL WITH THEM"
-label_settings = SubResource("LabelSettings_ll7y7")
-horizontal_alignment = 1
-vertical_alignment = 1
+<CLICK TO CONTINUE>"
+label_settings = SubResource("LabelSettings_yhs33")
 
 [node name="Timer" type="Timer" parent="."]
 
