@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=22 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_1dmw7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://mcetcdwiyku8" path="res://Textures/UI/background_small.png" id="7_6jwmj"]
 [ext_resource type="Texture2D" uid="uid://7xtgrgtpddoh" path="res://Textures/UI/scrollbar.png" id="7_un8fm"]
 [ext_resource type="PackedScene" uid="uid://dum81wyw83h4l" path="res://UI/shop_button.tscn" id="8_5f4cs"]
+[ext_resource type="Script" path="res://Levels/exit_button.gd" id="10_qc6rh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
@@ -60,13 +61,6 @@ VScrollBar/styles/grabber = SubResource("StyleBoxTexture_8ygul")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xn1i3")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
-
-[sub_resource type="GDScript" id="GDScript_5enli"]
-script/source = "extends Node
-# what is this
-func _on_pressed() -> void:
-	get_tree().quit() # huh??? this is the one that is being used
-"
 
 [node name="test_level" type="Node2D"]
 
@@ -301,7 +295,7 @@ offset_right = 308.0
 offset_bottom = 126.0
 theme_override_font_sizes/font_size = 50
 text = "Exit Game"
-script = SubResource("GDScript_5enli")
+script = ExtResource("10_qc6rh")
 
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]

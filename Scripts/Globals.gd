@@ -45,6 +45,9 @@ var tower_information = {
 		texture = load("res://Textures/Tower/police/bullet_tower.png"),
 		round_unlocked = 5
 	},
+	6: {
+		
+	}
 }
 
 var tower_radius_stats = {

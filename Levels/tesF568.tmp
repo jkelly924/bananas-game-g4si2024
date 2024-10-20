@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=22 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_1dmw7"]
@@ -62,10 +62,10 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 
 [sub_resource type="GDScript" id="GDScript_5enli"]
-script/source = "extends Node
-# what is this
+script/source = "extends exit_button
+
 func _on_pressed() -> void:
-	get_tree().quit() # huh??? this is the one that is being used
+	get_tree().quit() # bruh
 "
 
 [node name="test_level" type="Node2D"]
