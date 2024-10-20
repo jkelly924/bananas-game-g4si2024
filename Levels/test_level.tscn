@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=12 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/enemy_handler.gd" id="1_adipd"]
-[ext_resource type="PackedScene" uid="uid://ca03yjxna8b4n" path="res://Entities/Tower.tscn" id="2_yrywt"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
@@ -30,7 +29,7 @@ sources/1 = SubResource("TileSetAtlasSource_x8coy")
 [sub_resource type="Curve2D" id="Curve2D_o0ayj"]
 bake_interval = 0.01
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -64, 216, 0, 0, 0, 0, 360, 216, 0, 0, 0, 0, 360, 651, 0, 0, 0, 0, 216, 648, 0, 0, 0, 0, 216, 1080, 0, 0, 0, 0, 1080, 1080, 0, 0, 0, 0, 1080, 216, 0, 0, 0, 0, 648, 216, 0, 0, 0, 0, 648, 648, 0, 0, 0, 0, 1512, 648, 0, 0, 0, 0, 1512, 360, 0, 0, 0, 0, 1944, 360, 0, 0, 0, 0, 1944, 1080, 0, 0, 0, 0, 2376, 1080)
+"points": PackedVector2Array(0, 0, 0, 0, -64, 200, 0, 0, 0, 0, 362, 200, 0, 0, 0, 0, 360, 632, 0, 0, 0, 0, 214, 632, 0, 0, 0, 0, 216, 1064, 0, 0, 0, 0, 1078, 1064, 0, 0, 0, 0, 1080, 200, 0, 0, 0, 0, 646, 200, 0, 0, 0, 0, 648, 632, 0, 0, 0, 0, 1510, 632, 0, 0, 0, 0, 1512, 344, 0, 0, 0, 0, 1942, 344, 0, 0, 0, 0, 1944, 1064, 0, 0, 0, 0, 2376, 1064)
 }
 point_count = 14
 
@@ -42,10 +41,6 @@ point_count = 14
 script = ExtResource("1_adipd")
 
 [node name="Towers" type="Node2D" parent="."]
-
-[node name="Tower" parent="Towers" instance=ExtResource("2_yrywt")]
-position = Vector2(200, 200)
-damage_range = 10.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -68,6 +63,7 @@ script = ExtResource("3_5b40h")
 curve = SubResource("Curve2D_o0ayj")
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 3
@@ -178,6 +174,41 @@ vertical_alignment = 2
 layout_mode = 2
 texture_normal = ExtResource("5_7y2mf")
 stretch_mode = 0
+
+[node name="user_interface" type="CanvasLayer" parent="."]
+
+[node name="right_panel" type="ColorRect" parent="user_interface"]
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.1914, 0.2407, 0.29, 1)
+
+[node name="shop_panel" type="ColorRect" parent="user_interface/right_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.333
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.2376, 0.29676, 0.36, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="user_interface/right_panel/shop_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="user_interface/right_panel/shop_panel/ScrollContainer"]
+layout_mode = 2
 
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
