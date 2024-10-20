@@ -72,9 +72,6 @@ func on_end_of_round() -> void:
 
 
 func begin_round(round: int) -> void:
-	if round_running:
-		return
-	
 	round_running = true
 	print("Beginning Wave: ", round)
 	
@@ -91,7 +88,7 @@ func begin_round(round: int) -> void:
 			difficulty -= enemy_difficulties[enemy_level]
 			total_enemy_count += 1
 			enemy_counts[enemy_level] += 1
-	
+
 	var count: int = TowerHandler.positive_towers
 	for i in range(3):
 		if enemy_counts[i]<=count:
@@ -102,11 +99,11 @@ func begin_round(round: int) -> void:
 			count= 0;
 		if count == 0:
 			break
-
 	# win when enemies reach 0
 	if enemy_counts[0] + enemy_counts[1] + enemy_counts[2] == 0:
 		Globals.game_won.emit()
 		return
+	
 	
 	on_start_of_round(total_enemy_count)
 	
@@ -117,21 +114,18 @@ func begin_round(round: int) -> void:
 			await delay(0.5)
 			EnemyHandler.create_enemy(enemy_level, enemy_place)
 			enemy_place += 1
-
-
-func _on_final_enemy_death() -> void:
+	
 	on_end_of_round()
 	round_running = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Globals.final_enemy_death.connect(_on_final_enemy_death)
-	
 	for enemy_level: int in enemy_difficulties.size():
 		sum_enemy_difficulty += enemy_difficulties[enemy_level]
+	
+	begin_round(1)
 
 
-func _on_start_button_pressed() -> void:
+func _on_start_round_pressed() -> void:
 	if not round_running and len(enemies.get_children()) == 0:
 		begin_round(current_round)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://jcj5gilsqgpv"]
+[gd_scene load_steps=3 format=3 uid="uid://b5vxcxn4fwowl"]
 
 [ext_resource type="Texture2D" uid="uid://cqngp1hoioxag" path="res://Textures/Tower/shelter.png" id="1_3pd5b"]
 [ext_resource type="Script" path="res://Towers/Scripts/shelter.gd" id="2_0g088"]
