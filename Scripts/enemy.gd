@@ -4,8 +4,7 @@ class_name Enemy
 static var path: Path2D
 static var path_length: float
 
-#@export_range(0,2) var starting_level: int = 0
-@export var walk_speed: float = 2500
+var ws: float = 1600
 
 @export var level_0_health: float = 50
 @export var level_1_health: float = 100
@@ -68,13 +67,13 @@ func _process(delta: float) -> void:
 	if dead:
 		return
 	
-	var speed_modifier: float = delta
+	var speed: float = ws * delta
 	for node: Node in TowerHandler.slowing_towers:
 		var distance: float = (self.position - node.position).length()
 		if distance < node.slowing_range:
-			speed_modifier *= node.slowing_modifier
+			speed *= node.slowing_modifier
 	
-	path_follow.progress += walk_speed * speed_modifier
+	path_follow.progress += speed
 	if path_length - path_follow.progress <= 1:
 		handle_death()
 		EnemyHandler.register_enemy_finished_path(self.name)
@@ -100,7 +99,6 @@ func take_damage(damage: float) -> void:
 			adjust_to_level(current_level - 1)
 		elif(!dead):
 			sprite.animation = str(sprite_variant) + "0_death"
-			walk_speed = 0
 			sprite.play()
 			sprite.animation_finished.connect(handle_death)
 			dead = true
