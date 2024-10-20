@@ -62,10 +62,10 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 
 [sub_resource type="GDScript" id="GDScript_5enli"]
-script/source = "extends Node
-# what is this
+script/source = "extends ExitButton
+
 func _on_pressed() -> void:
-	get_tree().quit() # huh??? this is the one that is being used
+	getTree().quit() # bruh
 "
 
 [node name="test_level" type="Node2D"]

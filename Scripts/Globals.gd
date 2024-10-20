@@ -46,7 +46,7 @@ var tower_information = {
 		round_unlocked = 5
 	},
 	6: {
-		name = 
+		
 	}
 }
 
