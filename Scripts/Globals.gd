@@ -50,24 +50,6 @@ var tower_information = {
 	}
 }
 
-var tower_radius_stats = {
-	"sprinkler": {
-		damage = 1,
-		range = 2,
-		cooldown = 3,
-	},
-	"bullets": {
-		damage = 1,
-		range = 2,
-		cooldown = 3,
-	},
-	"gas": {
-		damage = 1,
-		range = 2,
-		cooldown = 3,
-	}
-}
-
 var money: int = 100
 var health: int = 10
 

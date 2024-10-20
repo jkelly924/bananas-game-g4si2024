@@ -6,6 +6,7 @@ var current_round: int = 1
 var enemy_scene = preload("res://Entities/Enemy.tscn")
 
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var round_timer: Timer = $RoundTimer
 @onready var enemies = owner.get_node("Enemies")
 
 var sum_enemy_difficulty: int
@@ -105,6 +106,8 @@ func begin_round(round: int) -> void:
 func _ready() -> void:
 	for enemy_level: int in enemy_difficulties.size():
 		sum_enemy_difficulty += enemy_difficulties[enemy_level]
+	
+	begin_round(1)
 
 
 func _on_start_round_pressed() -> void:

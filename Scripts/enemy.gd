@@ -68,7 +68,13 @@ func _process(delta: float) -> void:
 	if dead:
 		return
 	
-	path_follow.progress += walk_speed * delta
+	var speed_modifier: float = delta
+	for node: Node in TowerHandler.slowing_towers:
+		var distance: float = (self.position - node.position).length()
+		if distance < node.slowing_range:
+			speed_modifier *= node.slowing_modifier
+	
+	path_follow.progress += walk_speed * speed_modifier
 	if path_length - path_follow.progress <= 1:
 		handle_death()
 		EnemyHandler.register_enemy_finished_path(self.name)
