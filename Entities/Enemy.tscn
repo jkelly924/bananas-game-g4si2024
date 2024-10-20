@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbl62mssw0xrm"]
+[gd_scene load_steps=8 format=3 uid="uid://cbl62mssw0xrm"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_fb6av"]
 [ext_resource type="SpriteFrames" uid="uid://dfwanxl6ngdpl" path="res://Textures/Enemy/frames.tres" id="2_owjm0"]
@@ -13,6 +13,9 @@ bg_color = Color(1, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3tdq"]
 bg_color = Color(0, 0.988235, 0, 1)
 corner_detail = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgm17"]
+size = Vector2(90, 134)
 
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_fb6av")
@@ -45,3 +48,9 @@ theme_override_styles/background = SubResource("StyleBoxFlat_07suj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_g3tdq")
 value = 50.0
 show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7, 0)
+shape = SubResource("RectangleShape2D_dgm17")
