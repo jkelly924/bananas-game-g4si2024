@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1x5y440jmw0u"]
 
-[ext_resource type="Script" path="res://Scripts/tower.gd" id="1_nm8gt"]
+[ext_resource type="Script" path="res://Scripts/range_tower.gd" id="1_nm8gt"]
 [ext_resource type="Texture2D" uid="uid://dtcvgoly5sskj" path="res://Textures/test_tower.png" id="2_701gb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_buhx0"]

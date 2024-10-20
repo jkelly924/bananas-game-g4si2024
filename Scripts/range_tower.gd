@@ -1,16 +1,11 @@
 extends Node2D
 class_name Tower
 
+var tower_name: String
+
 var damage: float
 var range: float
 var cooldown: float
-# The amount of damager per second, applied per-frame.
-#@export_range(0.0, 100.0) var damage_rate: float
-
-# The distance in tiles that the damage will be applied. Increments in 1/16ths (one pixel).
-#@export_range(0.0, 10.0, 1.0/144) var damage_range: float
-
-#@export var damage_cooldown: float = 1.0
 
 var last_fire_time: float = 0
 
@@ -22,6 +17,7 @@ static func create(type: String, name: String, position: Vector2) -> Node:
 
 
 func initialize_params(type: String, name: String, position: Vector2) -> void:
+	tower_name = name
 	damage = Globals.tower_radius_stats[name].damage
 	range = Globals.tower_radius_stats[name].range
 	cooldown = Globals.tower_radius_stats[name].cooldown
@@ -50,6 +46,5 @@ func _process(delta: float) -> void:
 	
 	var enemy: Node = get_first_valid_enemy()
 	if enemy:
-		print("Shooting")
 		enemy.take_damage(damage)
 		last_fire_time = Time.get_ticks_msec() / 1000
