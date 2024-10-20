@@ -9,6 +9,7 @@ func _ready() -> void:
 
 
 func _on_replay_button_pressed() -> void:
+	Globals.begin_new_game()
 	get_tree().change_scene_to_file("res://Levels/test_level.tscn")
 
 

@@ -83,11 +83,23 @@ var tower_information = [
 	}
 ]
 
-var budget: int = 100
-var health: int = 10
+const init_budget: int = 100
+const init_health: int = 10
+
+var budget: int
+var health: int
+
+
+func begin_new_game():
+	budget = init_budget
+	health = init_health
+	
+	budget_changed.emit(budget)
+	health_changed.emit(health)
 
 
 func _ready():
+	begin_new_game()
 	game_won.connect(_on_game_won)
 	game_over.connect(_on_game_over)
 
@@ -97,7 +109,6 @@ func _on_game_over():
 
 
 func _on_game_won():
-	print("gmame won")
 	get_tree().change_scene_to_file("res://Levels/win_screen.tscn")
 
 
