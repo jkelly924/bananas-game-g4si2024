@@ -1,12 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://cbl62mssw0xrm"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_fb6av"]
-[ext_resource type="SpriteFrames" uid="uid://dfwanxl6ngdpl" path="res://Textures/Enemy/frames.tres" id="2_owjm0"]
+[ext_resource type="SpriteFrames" path="res://Textures/Enemy/frames.tres" id="2_owjm0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8osv3"]
 light_mode = 1
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03v7a"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07suj"]
+bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3tdq"]
 bg_color = Color(0, 0.988235, 0, 1)
@@ -26,6 +27,7 @@ animation = &"00_walk"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
 material = SubResource("CanvasItemMaterial_8osv3")
 layout_direction = 2
 offset_left = -40.0
@@ -33,7 +35,7 @@ offset_top = -48.0
 offset_right = 40.0
 offset_bottom = -32.0
 scale = Vector2(1, 0.5)
-theme_override_styles/background = SubResource("StyleBoxEmpty_03v7a")
+theme_override_styles/background = SubResource("StyleBoxFlat_07suj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_g3tdq")
 value = 50.0
 show_percentage = false

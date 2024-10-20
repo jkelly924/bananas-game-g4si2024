@@ -22,8 +22,7 @@ func get_difficulty_score(round: int) -> int:
 
 
 func spawn_enemy(level: int) -> void:
-	var enemy = enemy_scene.instantiate()
-	enemy.starting_level = level
+	var enemy = Enemy.create(level, "1")
 	enemies.add_child(enemy)
 
 
@@ -100,7 +99,7 @@ func begin_round(round: int) -> void:
 	for enemy_level: int in enemy_counts.size():
 		for i: int in range(enemy_counts[enemy_level]):
 			await delay(0.5)
-			spawn_enemy(enemy_level)
+			EnemyHandler.create_enemy(enemy_level)
 	
 	on_end_of_round()
 	round_running = false
@@ -114,5 +113,5 @@ func _ready() -> void:
 
 
 func _on_start_round_pressed() -> void:
-	if not round_running:
+	if not round_running and len(enemies.get_children()) == 0:
 		begin_round(current_round)

@@ -1,34 +1,56 @@
 extends Node2D
+class_name EnemyHandler
 
-var enemies_array: Array[Node2D]
+static var next_enemy_id_n: int
+static var active_enemy_ids: Array[Node2D]
+
+static var enemies_node: Node
 
 
-func get_enemy_from_index(index: int) -> Node2D:
+func _ready():
+	enemies_node = get_tree().get_root().get_node("test_level").get_node("Enemies")
+
+
+static func create_enemy(level: int) -> Node2D:
+	var id: String = str(next_enemy_id_n)
+	var enemy: Node2D = Enemy.create(level, id)
+	
+	next_enemy_id_n += 1
+	active_enemy_ids.append(enemy)
+	
+	enemies_node.add_child(enemy)
+	return enemy
+
+
+static func get_enemy_from_index(index: int) -> Node2D:
 	if index == -1:
 		return null
 	else:
-		return enemies_array[index]
+		return active_enemy_ids[index]
 
 
-func get_furthest_enemy_index(start: int = 0) -> int:
-	for i: int in range(start, enemies_array.size()):
-		var enemy: Node2D = enemies_array[i]
+static func get_furthest_enemy_index(start: int = 0) -> int:
+	for i: int in range(start, active_enemy_ids.size()):
+		var enemy: Node2D = active_enemy_ids[i]
 		if enemy != null:
-			return i
+			if enemy.dead:
+				active_enemy_ids[i] = null
+			else:
+				return i
 	
 	return -1
 
 
-func _on_child_entered_tree(node: Node) -> void:
-	enemies_array.append(node)
+static func register_enemy_finished_path() -> void:
+	pass
 
 
-func _on_child_exiting_tree(node: Node) -> void:
-	var index: int = enemies_array.find(node)
+static func on_new_round(enemy_count: int) -> void:
+	active_enemy_ids = []
+	active_enemy_ids.resize(enemy_count)
+
+
+static func _on_child_exiting_tree(node: Node) -> void:
+	var index: int = active_enemy_ids.find(node)
 	if index != -1:
-		enemies_array[index] = null
-
-
-func on_new_round(enemy_count: int) -> void:
-	enemies_array = []
-	enemies_array.resize(enemy_count)
+		active_enemy_ids[index] = null
