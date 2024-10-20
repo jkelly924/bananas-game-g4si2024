@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfn57wplcqugd"]
+[gd_scene load_steps=3 format=3 uid="uid://bfn57wplcqugd"]
 
 [ext_resource type="Script" path="res://Scripts/credits.gd" id="1_1hjx0"]
+[ext_resource type="AudioStream" uid="uid://skgcarvrdjkr" path="res://UI/hostilearchitecture.wav" id="2_3jamf"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_1hjx0")
@@ -17,7 +18,10 @@ color = Color(0, 0, 0, 1)
 [node name="credits_header" type="Label" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_left = -31.0
+offset_top = 69.0
+offset_right = -31.0
+offset_bottom = 172.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 75
 text = "CREDITS"
@@ -27,22 +31,35 @@ horizontal_alignment = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = 109.0
+offset_right = -6.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Mom - programmer
-Dad - Programmer
-Hipster - himself
-Jebediah - yeah
-Someone - ok
-Final person - mhm"
+theme_override_font_sizes/font_size = 60
+text = "Designed by Team Bananas
+
+Jayden Kelly - Main Developer 
+Jack Carluccio - Main Developer
+Numar Dubas - Main Developer
+Vanessa Hong - Artist and Developer
+Alli Batell - Artist and Developer
+Brayden Yan - Sound Designer and Developer
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="exit_button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 58.0
+offset_top = 34.0
+offset_right = 144.0
+offset_bottom = 84.0
 theme_override_font_sizes/font_size = 30
 text = "BACK"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3jamf")
+autoplay = true
 
 [connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]

@@ -4,6 +4,7 @@ extends Node2D
 
 @export var slowing_modifier: float = 0.5
 @export var slowing_range: float = 0.5
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var damage: float = 10
 var range: float = 2
@@ -14,7 +15,8 @@ var last_fire_time: float = 0
 
 # Here we can load the animation and whatever hoopla
 func _ready() -> void:
-	pass
+	sprite.play("blare")
+	_process(0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
