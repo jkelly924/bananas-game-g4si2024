@@ -49,6 +49,22 @@ static func get_first_valid_enemy(position: Vector2, range: float) -> Node:
 	
 	return null
 
+static func return_enemy_position(position: Vector2, range: float) -> Vector2:
+	var last_enemy_index: int = -1
+	var enemy_index: int = get_furthest_enemy_index(last_enemy_index + 1)
+	var enemy: Node = get_enemy_from_index(enemy_index)
+	while true:
+		enemy_index = get_furthest_enemy_index(last_enemy_index + 1)
+		enemy = get_enemy_from_index(enemy_index)
+		
+		if (enemy == null):
+			return position
+		last_enemy_index = enemy_index
+		if (enemy.position - position).length() < (range * 144):
+			return enemy.global_position
+		
+	return enemy.global_position 
+
 
 static func get_enemy_from_index(index: int) -> Node:
 	if index == -1:
