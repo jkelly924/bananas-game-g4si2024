@@ -72,13 +72,13 @@ static func register_enemy_death(id: String) -> void:
 	if (index != -1):
 		active_enemy_ids[index] = ""
 	
-	var found_existing: bool = false
+	var number_alive: int = 0
 	for this_id: String in active_enemy_ids:
 		if this_id != "":
-			found_existing = true
-			break
+			number_alive += 1
 	
-	if not found_existing:
+	Globals.remaining_changed.emit(number_alive)
+	if number_alive == 0:
 		Globals.final_enemy_death.emit()
 
 

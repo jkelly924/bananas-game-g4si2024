@@ -47,6 +47,8 @@ static func create_tower(tower_name: String, tower_position: Vector2) -> void:
 		positive_towers +=3;
 	if tower_name == "tent":
 		positive_towers +=1;
+	
+	Globals.saved_changed.emit(positive_towers)
 		
 func _process(delta: float) -> void:
 	if current_ghost:
