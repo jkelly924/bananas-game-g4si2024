@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgarnl7mutbg5"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_5mg2p"]
+[ext_resource type="Texture2D" uid="uid://tib4fvkgy4s7" path="res://Textures/MainMenu/base.jpeg" id="2_od3p4"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_5mg2p")
+
+[node name="background_image" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_od3p4")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="play_button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 435.0
+offset_top = 506.0
+offset_right = 605.0
+offset_bottom = 662.0
+rotation = -0.174533
+text = "
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Made for the G4SI 2024 Jam"
+horizontal_alignment = 2
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="credits_button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 142.0
+offset_top = 552.0
+offset_right = 361.0
+offset_bottom = 628.0
+rotation = -0.174533
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="background_image" to="." method="_on_background_image_mouse_entered"]
+[connection signal="mouse_entered" from="play_button" to="." method="_on_play_button_mouse_entered"]
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="credits_button" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="pressed" from="credits_button" to="." method="_on_credits_button_pressed"]
