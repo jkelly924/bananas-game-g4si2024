@@ -6,7 +6,7 @@ class_name TowerHandler
 
 var tile_map: TileMapLayer
 
-static var towers_node: Node
+static var towers_node: Node2D
 
 static var slowing_towers: Array[Node]
 
