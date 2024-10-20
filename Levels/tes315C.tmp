@@ -2,16 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_adipd"]
-<<<<<<< HEAD
 [ext_resource type="Script" path="res://Levels/TowerHandler.gd" id="2_qfpjj"]
-=======
->>>>>>> 11e4a42816586843e6428b852cf453b6e714ebb1
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
 [ext_resource type="Texture2D" uid="uid://bacilhv5jwdwx" path="res://Textures/test_enemy.png" id="5_7y2mf"]
-[ext_resource type="Texture2D" uid="uid://7xtgrgtpddoh" path="res://Textures/UI/scrollbar.png" id="7_un8fm"]
-[ext_resource type="PackedScene" uid="uid://dum81wyw83h4l" path="res://UI/shop_button.tscn" id="8_5f4cs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
@@ -41,50 +36,23 @@ point_count = 14
 
 [sub_resource type="ImageTexture" id="ImageTexture_ija4m"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_ahdxx"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ygul"]
-texture = ExtResource("7_un8fm")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xn1i3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iix7f"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btxjb"]
-
-[sub_resource type="Theme" id="Theme_prv8g"]
-VScrollBar/icons/decrement = SubResource("ImageTexture_ahdxx")
-VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_ahdxx")
-VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_ahdxx")
-VScrollBar/icons/increment = SubResource("ImageTexture_ahdxx")
-VScrollBar/icons/increment_highlight = SubResource("ImageTexture_ahdxx")
-VScrollBar/icons/increment_pressed = SubResource("ImageTexture_ahdxx")
-VScrollBar/styles/grabber = SubResource("StyleBoxTexture_8ygul")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xn1i3")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
-VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
-
 [node name="test_level" type="Node2D"]
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("1_adipd")
 
 [node name="Towers" type="Node2D" parent="."]
-<<<<<<< HEAD
 script = ExtResource("2_qfpjj")
-=======
->>>>>>> 11e4a42816586843e6428b852cf453b6e714ebb1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
-scale = Vector2(1.875, 1.875)
+scale = Vector2(1.125, 1.125)
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAADACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAFAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAGAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAADALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAADAAAAEAAQABAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAADAAAAQAAQAAAAAAADAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAADAAAAcAAQAAAAAAAGAAAAgAAQAAAAAAAAABAAEAAQABAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQACAAAAAGABAAUAAQABAAAAAAABAAYAAQABAAAAAAABAAcAAQACAAAAADABAAgAAQAAAAAAAAACAAEAAQACAAAAAAACAAIAAQABAAAAAAACAAMAAQABAAAAAAACAAQAAQACAAAAAFACAAUAAQAAAAAAAAACAAYAAQAAAAAAAAACAAcAAQABAAAAAAACAAgAAQAAAAAAAAADAAEAAQAAAAAAADADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAFADAAYAAQAAAAAAAAADAAcAAQABAAAAAAADAAgAAQAAAAAAAGAEAAEAAQACAAAAAGAEAAIAAQABAAAAAAAEAAMAAQABAAAAAAAEAAQAAQACAAAAADAEAAUAAQAAAAAAAAAEAAcAAQABAAAAAAAEAAgAAQAAAAAAAAAFAAEAAQABAAAAAAAFAAIAAQAAAAAAADAFAAcAAQABAAAAAAAFAAgAAQAAAAAAAAAGAAEAAQABAAAAAAAGAAIAAQAAAAAAADAGAAMAAQAAAAAAAFAGAAQAAQABAAAAAAAGAAUAAQAAAAAAAAAGAAYAAQAAAAAAAAAGAAcAAQABAAAAAAAGAAgAAQAAAAAAAAAHAAEAAQACAAAAAAAHAAIAAQABAAAAAAAHAAMAAQABAAAAAAAHAAQAAQABAAAAAAAHAAUAAQABAAAAAAAHAAYAAQABAAAAAAAHAAcAAQACAAAAAFAHAAgAAQAAAAAAAGAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAADAIAAMAAQAAAAAAAAAIAAQAAQABAAAAAAAIAAUAAQAAAAAAAFAIAAYAAQAAAAAAAFAIAAcAAQAAAAAAAGAIAAgAAQAAAAAAAFAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQABAAAAAAAJAAUAAQAAAAAAAFAJAAYAAQAAAAAAAFAJAAcAAQAAAAAAAFAJAAgAAQAAAAAAAFAKAAEAAQAAAAAAAAAKAAIAAQACAAAAAGAKAAMAAQABAAAAAAAKAAQAAQACAAAAAFAKAAUAAQAAAAAAAFAKAAYAAQAAAAAAAFAKAAcAAQAAAAAAAGAKAAgAAQAAAAAAAFALAAEAAQAAAAAAAAALAAIAAQABAAAAAAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAGALAAYAAQAAAAAAAFALAAcAAQAAAAAAAFALAAgAAQAAAAAAAFAMAAEAAQAAAAAAADAMAAIAAQABAAAAAAAMAAMAAQAAAAAAAGAMAAQAAQAAAAAAAAAMAAUAAQAAAAAAAFAMAAYAAQAAAAAAAFAMAAcAAQAAAAAAAFAMAAgAAQAAAAAAAFANAAEAAQAAAAAAAAANAAIAAQACAAAAAAANAAMAAQABAAAAAAANAAQAAQABAAAAAAANAAUAAQABAAAAAAANAAYAAQABAAAAAAANAAcAAQACAAAAADANAAgAAQAAAAAAAAAOAAEAAQAAAAAAAAAOAAIAAQAAAAAAADAOAAMAAQAAAAAAAAAOAAQAAQAAAAAAAAAOAAUAAQAAAAAAAAAOAAYAAQAAAAAAADAOAAcAAQABAAAAAAAOAAgAAQAAAAAAAAAPAAEAAQAAAAAAAAAPAAIAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAQAAQAAAAAAAGAPAAUAAQAAAAAAAAAPAAYAAQAAAAAAAAAPAAcAAQABAAAAAAAPAAgAAQAAAAAAADAFAAQAAQABAAAAAAAEAAYAAQAAAAAAAGAFAAYAAQAAAAAAAAAFAAUAAQAAAAAAAFAFAAMAAQAAAAAAAGA=")
 tile_set = SubResource("TileSet_m3k0l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+offset = Vector2(1152, 648)
 zoom = Vector2(0.5, 0.5)
-editor_draw_limits = true
 
 [node name="Rounds" type="Node" parent="."]
 script = ExtResource("3_5b40h")
@@ -243,28 +211,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_prv8g")
-scroll_vertical_custom_step = 10.0
 
-[node name="GridContainer" type="GridContainer" parent="user_interface/right_panel/shop_panel/ScrollContainer"]
+[node name="VScrollBar" type="VScrollBar" parent="user_interface/right_panel/shop_panel/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_override_constants/h_separation = 6
-theme_override_constants/v_separation = 6
-columns = 2
-
-[node name="shop_button" parent="user_interface/right_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
 
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
