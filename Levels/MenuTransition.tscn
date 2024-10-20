@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bos06sfnxk3l1"]
+[gd_scene load_steps=6 format=3 uid="uid://bos06sfnxk3l1"]
 
 [ext_resource type="Script" path="res://Scripts/menu_transition.gd" id="1_eyj77"]
+[ext_resource type="AudioStream" uid="uid://skgcarvrdjkr" path="res://UI/hostilearchitecture.wav" id="2_ddv4d"]
 
 [sub_resource type="SystemFont" id="SystemFont_rui00"]
 font_names = PackedStringArray("Comic Sans MS")
@@ -8,6 +9,13 @@ font_names = PackedStringArray("Comic Sans MS")
 [sub_resource type="LabelSettings" id="LabelSettings_ll7y7"]
 font = SubResource("SystemFont_rui00")
 font_size = 128
+
+[sub_resource type="GDScript" id="GDScript_etlcp"]
+script/source = "extends Node
+# what is this
+func _on_pressed() -> void:
+	get_tree().quit() # huh??? this is the one that is being used
+"
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_eyj77")
@@ -91,3 +99,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 56.0
+offset_top = 49.0
+offset_right = 308.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 30
+text = "Exit Game"
+script = SubResource("GDScript_etlcp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ddv4d")
+autoplay = true
+
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
