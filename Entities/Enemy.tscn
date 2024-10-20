@@ -18,6 +18,7 @@ corner_detail = 1
 size = Vector2(90, 134)
 
 [node name="enemy" type="Node2D"]
+scale = Vector2(1.667, 1.667)
 script = ExtResource("1_fb6av")
 walk_speed = 200.0
 
