@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://jcj5gilsqgpv"]
+
+[ext_resource type="Texture2D" uid="uid://cqngp1hoioxag" path="res://Textures/Tower/shelter.png" id="1_3pd5b"]
+[ext_resource type="Script" path="res://Towers/Scripts/shelter.gd" id="2_0g088"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Shelter" type="Sprite2D" parent="."]
+position = Vector2(24, -15)
+texture = ExtResource("1_3pd5b")
+script = ExtResource("2_0g088")
