@@ -1,11 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=21 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_adipd"]
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://Levels/TowerHandler.gd" id="2_qfpjj"]
-=======
->>>>>>> 11e4a42816586843e6428b852cf453b6e714ebb1
+[ext_resource type="Script" path="res://Scripts/TowerHandler.gd" id="2_qfpjj"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="4_jdq3b"]
@@ -70,10 +67,7 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 script = ExtResource("1_adipd")
 
 [node name="Towers" type="Node2D" parent="."]
-<<<<<<< HEAD
 script = ExtResource("2_qfpjj")
-=======
->>>>>>> 11e4a42816586843e6428b852cf453b6e714ebb1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -259,7 +253,7 @@ custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
-anchors_preset = -1
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
