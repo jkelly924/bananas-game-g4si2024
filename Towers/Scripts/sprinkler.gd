@@ -13,7 +13,8 @@ var last_fire_time: float = 0
 
 # Here we can load the animation and whatever hoopla
 func _ready() -> void:
-	pass
+	get_node("AnimatedSprite2D").play()
+	get_node("GPUParticles2D").restart()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -12,7 +12,7 @@ var shop_button_scene = load("res://UI/shop_button.tscn")
 
 
 func _on_budget_changed(budget: int):
-	budget_label.text = "Tax Dollars: " + str(budget)
+	budget_label.text = "Budget: $" + str(budget) + "k"
 
 
 func _on_health_changed(health: int):
@@ -28,8 +28,14 @@ func begin_preview_dragging(tower_id: String) -> void:
 	pass
 
 func _on_shop_button_pressed(tower_id: String):
-	print(tower_id)
-	TowerHandler.create_ghost(tower_id)
+	var tower_information
+	for info in Globals.tower_information:
+		if info.id == tower_id:
+			tower_information = info
+
+	if Globals.budget >= tower_information.price:
+		Globals.award_budget(-tower_information.price)
+		TowerHandler.create_ghost(tower_id)
 
 
 
@@ -49,7 +55,7 @@ func _ready() -> void:
 		var preview_image: TextureRect = this.get_node("Button").get_node("Background").get_node("Preview")
 		
 		name_label.text = str(tower_information.name)
-		price_label.text = str(tower_information.price) + 'k'
+		price_label.text = '$' + str(tower_information.price) + 'k'
 		preview_image.texture = tower_information.texture
 		
 		this.get_node("Button").connect("pressed", _on_shop_button_pressed.bind(tower_information.id))

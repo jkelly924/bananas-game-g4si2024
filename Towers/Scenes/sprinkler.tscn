@@ -1,18 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsv5uiri4own0"]
+[gd_scene load_steps=8 format=3 uid="uid://bsv5uiri4own0"]
 
 [ext_resource type="Script" path="res://Towers/Scripts/sprinkler.gd" id="1_7pgt6"]
-[ext_resource type="Texture2D" uid="uid://dtcvgoly5sskj" path="res://Textures/test_tower.png" id="2_pdhxr"]
+[ext_resource type="Texture2D" uid="uid://bhitbegn7h5rw" path="res://Textures/Tower/sprinkler/0.png" id="2_yv73y"]
+[ext_resource type="Texture2D" uid="uid://squ3v07k6m03" path="res://Textures/Tower/sprinkler/1.png" id="3_1oj3j"]
+[ext_resource type="Texture2D" uid="uid://cky7loeu0swcg" path="res://Textures/Tower/sprinkler/2.png" id="4_vn1ua"]
+[ext_resource type="Texture2D" uid="uid://b4liavmpluukx" path="res://Textures/Tower/sprinkler/spray.png" id="5_3aij5"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_buhx0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_irx8k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pdhxr")
+"texture": ExtResource("2_yv73y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1oj3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vn1ua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1oj3j")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_natra"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = -0.01
+initial_velocity_max = 512.0
+gravity = Vector3(0, 256, 0)
 
 [node name="tower" type="Node2D"]
 script = ExtResource("1_7pgt6")
@@ -20,4 +42,13 @@ script = ExtResource("1_7pgt6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 texture_filter = 3
-sprite_frames = SubResource("SpriteFrames_buhx0")
+sprite_frames = SubResource("SpriteFrames_irx8k")
+frame_progress = 0.203497
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 512
+process_material = SubResource("ParticleProcessMaterial_natra")
+texture = ExtResource("5_3aij5")
+explosiveness = 0.25
+randomness = 1.0

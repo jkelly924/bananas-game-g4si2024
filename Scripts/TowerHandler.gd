@@ -33,7 +33,7 @@ static func create_tower(tower_name: String, tower_position: Vector2) -> void:
 	var tower: Node = load("res://Towers/Scenes/" + tower_name + ".tscn").instantiate()
 	towers_node.add_child(tower)
 	tower.global_position = tower_position
-	tower.z_index = tower_position.y
+	tower.z_index = tower_position.y / 128
 	
 	if tower_name == "speaker" or tower_name == "bench":
 		slowing_towers.append(tower)

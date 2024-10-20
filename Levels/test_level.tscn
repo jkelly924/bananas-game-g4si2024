@@ -312,6 +312,7 @@ texture_normal = ExtResource("12_co4c3")
 stretch_mode = 0
 
 [node name="exit_button" type="Button" parent="user_interface"]
+visible = false
 offset_left = 56.0
 offset_top = 49.0
 offset_right = 308.0
