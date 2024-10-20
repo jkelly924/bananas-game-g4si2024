@@ -50,6 +50,7 @@ func _ready() -> void:
 	progress_bar_offset = progress_bar.position
 	path = get_tree().get_root().get_node("test_level").get_node("Path2D")
 	path_follow = PathFollow2D.new()
+	path_follow.loop = false
 	path.add_child(path_follow)
 
 	adjust_to_level(current_level)
