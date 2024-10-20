@@ -1,14 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci8kj24kcb808"]
+[gd_scene load_steps=3 format=3 uid="uid://ci8kj24kcb808"]
 
-[ext_resource type="Script" path="res://Levels/win_screen.gd" id="1_rslen"]
+[ext_resource type="Script" path="res://Scripts/win_screen.gd" id="1_rslen"]
 [ext_resource type="Texture2D" uid="uid://d0qi82618sk06" path="res://Textures/B8AC3FF0-13F2-429B-93E3-96DF46E38806.png" id="2_fxrmj"]
-
-[sub_resource type="GDScript" id="GDScript_inrwq"]
-script/source = "extends Node
-# what is this
-func _on_pressed() -> void:
-	get_tree().quit() # huh??? this is the one that is being used
-"
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_rslen")
@@ -66,22 +59,18 @@ and find jobs, the new citizens have reinvested into your city and your tax
  funds and all your citizens' quality of life have considerably increased."
 horizontal_alignment = 1
 
-[node name="ExitButton" type="Button" parent="."]
+[node name="exit_button" type="Button" parent="."]
 offset_left = 45.0
 offset_top = 40.0
 offset_right = 297.0
 offset_bottom = 117.0
 theme_override_font_sizes/font_size = 50
 text = "Exit Game"
-script = SubResource("GDScript_inrwq")
 
-[node name="replayButton" type="Button" parent="."]
+[node name="replay_button" type="Button" parent="."]
 offset_left = 831.0
 offset_top = 912.0
 offset_right = 1107.0
 offset_bottom = 1040.0
 theme_override_font_sizes/font_size = 50
 text = "Replay"
-
-[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
-[connection signal="pressed" from="replayButton" to="." method="_on_replay_button_pressed"]

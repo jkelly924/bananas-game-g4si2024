@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=25 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
@@ -63,13 +63,6 @@ VScrollBar/styles/grabber = SubResource("StyleBoxTexture_8ygul")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xn1i3")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
-
-[sub_resource type="GDScript" id="GDScript_5enli"]
-script/source = "extends Node
-# what is this
-func _on_pressed() -> void:
-	get_tree().quit() # huh??? this is the one that is being used
-"
 
 [node name="test_level" type="Node2D"]
 
@@ -318,14 +311,13 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("12_co4c3")
 stretch_mode = 0
 
-[node name="ExitButton" type="Button" parent="."]
+[node name="exit_button" type="Button" parent="user_interface"]
 offset_left = 56.0
 offset_top = 49.0
 offset_right = 308.0
 offset_bottom = 126.0
 theme_override_font_sizes/font_size = 50
 text = "Exit Game"
-script = SubResource("GDScript_5enli")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ctc6o")
@@ -351,4 +343,4 @@ stream = ExtResource("14_cprcl")
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
 [connection signal="pressed" from="user_interface/start_button" to="Rounds" method="_on_start_button_pressed"]
-[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="user_interface/exit_button" to="user_interface" method="_on_exit_button_pressed"]

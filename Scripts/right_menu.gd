@@ -7,6 +7,7 @@ var empty_heart: Texture = load("res://Textures/UI/heart_empty.png")
 @onready var budget_label: Label = $side_panel/MarginContainer/Control/budget_label
 @onready var grid_container: GridContainer = $side_panel/MarginContainer/Control/shop_panel/ScrollContainer/GridContainer
 @onready var hearts_group: Control = $side_panel/MarginContainer/Control/hearts
+@onready var exit_button: Button = $exit_button
 
 var shop_button_scene = load("res://UI/shop_button.tscn")
 
@@ -27,7 +28,6 @@ func _on_health_changed(health: int):
 func _on_shop_button_pressed(tower_id: String):
 	print(tower_id)
 	TowerHandler.create_tower(tower_id, Vector2(400, 400))
-
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +53,6 @@ func _ready() -> void:
 		
 		grid_container.add_child(this)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
