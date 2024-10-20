@@ -97,6 +97,7 @@ func _on_game_over():
 
 
 func _on_game_won():
+	print("gmame won")
 	get_tree().change_scene_to_file("res://Levels/win_screen.tscn")
 
 
