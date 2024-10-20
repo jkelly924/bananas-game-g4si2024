@@ -1,9 +1,13 @@
-[gd_scene load_steps=25 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=29 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
+[ext_resource type="PackedScene" uid="uid://c6k723semexi" path="res://Towers/Scenes/police_tower_2.tscn" id="2_6tkcx"]
+[ext_resource type="PackedScene" uid="uid://dqogty2lb3oni" path="res://Entities/Spikes.tscn" id="2_o05jo"]
 [ext_resource type="Texture2D" uid="uid://dkv1qx08q54ne" path="res://Textures/Map/tileset.png" id="3_1u0c1"]
 [ext_resource type="Script" path="res://Scripts/round_handler.gd" id="3_5b40h"]
+[ext_resource type="PackedScene" uid="uid://83ah624wpp4p" path="res://Towers/Scenes/police_tower1.tscn" id="3_8343c"]
+[ext_resource type="PackedScene" uid="uid://c86vtxtc67bt7" path="res://Towers/Scenes/speaker.tscn" id="3_resdl"]
 [ext_resource type="Texture2D" uid="uid://mcetcdwiyku8" path="res://Textures/UI/background_small.png" id="7_6jwmj"]
 [ext_resource type="Texture2D" uid="uid://7xtgrgtpddoh" path="res://Textures/UI/scrollbar.png" id="7_un8fm"]
 [ext_resource type="Script" path="res://Scripts/right_menu.gd" id="8_ygav1"]
@@ -63,7 +67,15 @@ VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_xn1i3")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_iix7f")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 
+[sub_resource type="GDScript" id="GDScript_5enli"]
+script/source = "extends Node
+# what is this
+func _on_pressed() -> void:
+	get_tree().quit() # huh??? this is the one that is being used
+"
+
 [node name="test_level" type="Node2D"]
+position = Vector2(-1933, 117)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("1_utey3")
@@ -71,6 +83,18 @@ script = ExtResource("1_utey3")
 [node name="Towers" type="Node2D" parent="."]
 z_index = 1
 position = Vector2(334, 51)
+
+[node name="Spikes" parent="Towers" instance=ExtResource("2_o05jo")]
+position = Vector2(500, 1742)
+
+[node name="PoliceTower2" parent="Towers" instance=ExtResource("2_6tkcx")]
+position = Vector2(1729, 236)
+
+[node name="PoliceTower1" parent="Towers" instance=ExtResource("3_8343c")]
+position = Vector2(49, 791)
+
+[node name="Speaker" parent="Towers" instance=ExtResource("3_resdl")]
+position = Vector2(926, 1162)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -309,13 +333,14 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("12_co4c3")
 stretch_mode = 0
 
-[node name="exit_button" type="Button" parent="user_interface"]
+[node name="ExitButton" type="Button" parent="."]
 offset_left = 56.0
 offset_top = 49.0
 offset_right = 308.0
 offset_bottom = 126.0
 theme_override_font_sizes/font_size = 50
 text = "Exit Game"
+script = SubResource("GDScript_5enli")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ctc6o")
@@ -341,4 +366,4 @@ stream = ExtResource("14_cprcl")
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Enemies" to="Enemies" method="_on_child_exiting_tree"]
 [connection signal="pressed" from="user_interface/start_button" to="Rounds" method="_on_start_button_pressed"]
-[connection signal="pressed" from="user_interface/exit_button" to="user_interface" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]

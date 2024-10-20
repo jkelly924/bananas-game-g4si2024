@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6k723semexi"]
+
+[ext_resource type="Texture2D" uid="uid://cpup53that1cl" path="res://Textures/Tower/police_tower_2.png" id="1_byhob"]
+[ext_resource type="Script" path="res://Towers/Scripts/police_tower_2.gd" id="2_q3cqn"]
+
+[node name="PoliceTower2" type="Sprite2D"]
+position = Vector2(169, 105)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_byhob")
+script = ExtResource("2_q3cqn")

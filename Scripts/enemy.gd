@@ -73,7 +73,11 @@ func _process(delta: float) -> void:
 		if distance < node.slowing_range:
 			speed *= node.slowing_modifier
 	
+
+	# path_follow.progress += 250 * speed_modifier
+
 	path_follow.progress += speed
+
 	if path_length - path_follow.progress <= 1:
 		handle_death()
 		EnemyHandler.register_enemy_finished_path(self.name)
