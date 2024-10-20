@@ -8,11 +8,11 @@
 [resource]
 animations = [{
 "frames": [{
-"duration": 2.0,
-"texture": ExtResource("1_mhevj")
-}, {
 "duration": 10.0,
 "texture": ExtResource("2_ks8bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_mhevj")
 }, {
 "duration": 1.0,
 "texture": ExtResource("1_mhevj")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dibrnn7580p00"]
 
-[ext_resource type="Texture2D" uid="uid://c4xome4kdy5tt" path="res://Textures/Tower/food_bank.png" id="1_x1x5g"]
+[ext_resource type="Texture2D" uid="uid://bn7g1nj3efuig" path="res://Textures/Tower/food_bank.png" id="1_x1x5g"]
 [ext_resource type="Script" path="res://Towers/Scripts/food.gd" id="2_qxpyr"]
 
 [node name="Node2D" type="Node2D"]

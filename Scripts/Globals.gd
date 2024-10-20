@@ -8,6 +8,8 @@ signal enemyDestroyed(remain)
 signal game_over()
 signal game_won()
 
+signal final_enemy_death()
+
 var tower_information = [
 	{
 		name = "Sprinkler",
@@ -81,13 +83,39 @@ var tower_information = [
 	}
 ]
 
-var budget: int = 100
-var health: int = 10
+const init_budget: int = 100
+const init_health: int = 10
+
+var budget: int
+var health: int
+
+
+func begin_new_game():
+	budget = init_budget
+	health = init_health
+	
+	budget_changed.emit(budget)
+	health_changed.emit(health)
+
+
+func _ready():
+	begin_new_game()
+	game_won.connect(_on_game_won)
+	game_over.connect(_on_game_over)
+
+
+func _on_game_over():
+	get_tree().change_scene_to_file("res://Levels/lose_screen.tscn")
+
+
+func _on_game_won():
+	get_tree().change_scene_to_file("res://Levels/win_screen.tscn")
 
 
 func award_budget(n: int) -> void:
 	budget += n
 	budget_changed.emit(budget)
+	SoundHandler.play_gain_money_sound()
 
 
 func take_damage() -> void:
@@ -96,3 +124,5 @@ func take_damage() -> void:
 	
 	if health <= 0:
 		game_over.emit()
+	else:
+		SoundHandler.play_hurt_sound()
