@@ -24,13 +24,10 @@ func _on_health_changed(health: int):
 			heart.texture = empty_heart
 
 
-func begin_preview_dragging(tower_id: String) -> void:
-	pass
-
-
 func _on_shop_button_pressed(tower_id: String):
 	print(tower_id)
 	TowerHandler.create_tower(tower_id, Vector2(400, 400))
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -49,13 +46,12 @@ func _ready() -> void:
 		var preview_image: TextureRect = this.get_node("Button").get_node("Background").get_node("Preview")
 		
 		name_label.text = str(tower_information.name)
-		price_label.text = str(tower_information.price)
+		price_label.text = str(tower_information.price) + 'k'
 		preview_image.texture = tower_information.texture
 		
 		this.get_node("Button").connect("pressed", _on_shop_button_pressed.bind(tower_information.id))
 		
 		grid_container.add_child(this)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

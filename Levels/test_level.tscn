@@ -72,7 +72,6 @@ func _on_pressed() -> void:
 "
 
 [node name="test_level" type="Node2D"]
-position = Vector2(-1933, 117)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("1_utey3")

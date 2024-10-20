@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var disabled: bool = false
+
 @export var tower_name: String = "speaker"
 
 @export var slowing_modifier: float = 0.5
@@ -12,7 +14,6 @@ var cooldown: float = 3
 
 var last_fire_time: float = 0
 
-
 # Here we can load the animation and whatever hoopla
 func _ready() -> void:
 	sprite.play("blare")
@@ -21,6 +22,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if disabled:
+		return
+
 	if Time.get_ticks_msec() / 1000 - last_fire_time < cooldown:
 		return
 	

@@ -58,7 +58,7 @@ static func get_enemy_from_index(index: int) -> Node:
 
 
 static func get_furthest_enemy_index(start: int = 0) -> int:
-	for i: int in range(start, active_enemy_ids.size()):
+	for i: int in range(start, len(active_enemy_ids)):
 		var enemy_id: String = active_enemy_ids[i]
 		if enemy_id != "":
 			return i
