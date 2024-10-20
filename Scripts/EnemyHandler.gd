@@ -24,6 +24,16 @@ static func create_enemy(level: int, place: int) -> Node:
 	return enemy
 
 
+static func get_enemies_in_range(position: Vector2, range: float) -> Array[Node]:
+	var enemies: Array[Node] = []
+	for enemy_id: String in id_to_enemy:
+		var node: Node = id_to_enemy[enemy_id]
+		if (position - node.position).length() <= range * 144:
+			enemies.append(node)
+	
+	return enemies
+
+
 # Finds the first enemy that is the furthest down the track, still in the tower range
 static func get_first_valid_enemy(position: Vector2, range: float) -> Node:
 	var last_enemy_index: int = -1
