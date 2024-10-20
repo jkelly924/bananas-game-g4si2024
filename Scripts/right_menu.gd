@@ -42,7 +42,7 @@ func begin_preview_dragging(tower_id: String) -> void:
 
 func _on_shop_button_pressed(tower_id: String):
 	print(tower_id)
-	TowerHandler.create_tower(tower_id, Vector2(400, 400))
+	TowerHandler.create_ghost(tower_id)
 
 
 

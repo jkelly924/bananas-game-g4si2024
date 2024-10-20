@@ -54,6 +54,7 @@ func _process(delta: float) -> void:
 		if is_point_on_path(tile_map.to_local(current_ghost.global_position)):
 			if current_ghost_name == "spikes":
 				current_ghost.modulate = can_place_color
+				current_ghost.global_position = tile_map.to_global(tile_map.map_to_local(tile_map.local_to_map(tile_map.to_local(current_ghost.global_position))))
 			else:
 				current_ghost.modulate = cannot_place_color
 		else:
