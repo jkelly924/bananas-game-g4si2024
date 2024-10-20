@@ -6,6 +6,7 @@ var current_round: int = 1
 var enemy_scene = preload("res://Entities/Enemy.tscn")
 
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var round_timer: Timer = $RoundTimer
 @onready var enemies = owner.get_node("Enemies")
 
 var sum_enemy_difficulty: int
@@ -66,7 +67,7 @@ func on_start_of_round(enemy_count: int) -> void:
 
 
 func on_end_of_round() -> void:
-	Globals.money += current_round * 100
+	Globals.award_budget(current_round * 100)
 	current_round += 1
 
 
@@ -88,6 +89,11 @@ func begin_round(round: int) -> void:
 			total_enemy_count += 1
 			enemy_counts[enemy_level] += 1
 	
+	total_enemy_count -= TowerHandler.positive_towers
+	if total_enemy_count <= 0:
+		# Vanessa put the end transition here 
+	
+	
 	on_start_of_round(total_enemy_count)
 	
 	print(enemy_counts)
@@ -105,6 +111,8 @@ func begin_round(round: int) -> void:
 func _ready() -> void:
 	for enemy_level: int in enemy_difficulties.size():
 		sum_enemy_difficulty += enemy_difficulties[enemy_level]
+	
+	begin_round(1)
 
 
 func _on_start_round_pressed() -> void:
