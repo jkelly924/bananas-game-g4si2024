@@ -11,9 +11,6 @@ static var positive_towers: int =0
 func _ready() -> void:
 	towers_node = self
 
-	create_tower("house", Vector2(150, 150))
-
-
 
 static func create_tower(name: String, position: Vector2) -> void:
 	var tower: Node = load("res://Towers/Scenes/" + name + ".tscn").instantiate()
