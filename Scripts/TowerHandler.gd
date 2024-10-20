@@ -82,4 +82,3 @@ func _unhandled_input(event: InputEvent) -> void:
 			towers_node.remove_child(current_ghost)
 			current_ghost = null
 			current_ghost_name = ""
-
