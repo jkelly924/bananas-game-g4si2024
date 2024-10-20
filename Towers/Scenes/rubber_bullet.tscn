@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xcej8ny8ujvd"]
+
+[ext_resource type="Texture2D" uid="uid://bbpkatxfc4e4y" path="res://Textures/Tower/police/rubber_bullet.png" id="1_llr3x"]
+
+[node name="RubberBullet" type="Sprite2D"]
+position = Vector2(-2, -10)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_llr3x")
