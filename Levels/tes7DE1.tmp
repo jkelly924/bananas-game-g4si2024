@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=26 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_utey3"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://7xtgrgtpddoh" path="res://Textures/UI/scrollbar.png" id="7_un8fm"]
 [ext_resource type="Script" path="res://Scripts/right_menu.gd" id="8_ygav1"]
 [ext_resource type="AudioStream" uid="uid://skgcarvrdjkr" path="res://UI/hostilearchitecture.wav" id="11_ctc6o"]
-[ext_resource type="Texture2D" uid="uid://tls02dcggskq" path="res://Textures/UI/heart.png" id="12_333s4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn7pl"]
 resource_name = "Test Tileset"
@@ -272,7 +271,7 @@ text = "Budget: 12.0k"
 [node name="shop_panel" type="ColorRect" parent="user_interface/side_panel/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.15
+anchor_top = 0.05
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -294,135 +293,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 columns = 2
-
-[node name="hearts" type="Control" parent="user_interface/side_panel/MarginContainer/Control"]
-layout_mode = 1
-anchor_top = 0.05
-anchor_right = 1.0
-anchor_bottom = 0.15
-
-[node name="0" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.2
-anchor_bottom = 0.5
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/0"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="1" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_right = 0.4
-anchor_bottom = 0.5
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/1"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="2" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4
-anchor_right = 0.6
-anchor_bottom = 0.5
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/2"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="3" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.6
-anchor_right = 0.8
-anchor_bottom = 0.5
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/3"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="4" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8
-anchor_right = 1.0
-anchor_bottom = 0.5
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/4"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="5" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 0.2
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/5"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="6" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.5
-anchor_right = 0.4
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/6"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="7" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.5
-anchor_right = 0.6
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/7"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="8" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.6
-anchor_top = 0.5
-anchor_right = 0.8
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/8"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
-
-[node name="9" type="AspectRatioContainer" parent="user_interface/side_panel/MarginContainer/Control/hearts"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="user_interface/side_panel/MarginContainer/Control/hearts/9"]
-layout_mode = 2
-texture = ExtResource("12_333s4")
-expand_mode = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="user_interface"]
 anchors_preset = 11

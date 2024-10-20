@@ -90,6 +90,7 @@ func begin_round(round: int) -> void:
 			enemy_counts[enemy_level] += 1
 
 	if total_enemy_count <= 0:
+		pass
 		# Vanessa put the end transition here 
 		pass
 	
