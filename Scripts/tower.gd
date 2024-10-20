@@ -8,11 +8,9 @@ extends Node2D
 
 var last_fire_time: float = 0
 
-var enemies: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	enemies = owner.get_node("Enemies")
 	print("Rate: ", damage_rate)
 	print("Range: ", damage_range)
 	pass # Replace with function body.
@@ -25,15 +23,15 @@ func _process(delta: float) -> void:
 	var fired: bool = false
 	var last_enemy_index: int = -1
 	while true:
-		var enemy_index: int = enemies.get_furthest_enemy_index(last_enemy_index + 1)
-		var enemy: Node2D = enemies.get_enemy_from_index(enemy_index)
+		var enemy_index: int = EnemyHandler.get_furthest_enemy_index(last_enemy_index + 1)
+		var enemy: Node2D = EnemyHandler.get_enemy_from_index(enemy_index)
 		if enemy == null:
 			break
 		
 		last_enemy_index = enemy_index
 		if (enemy.position - position).length() < (damage_range * 144):
 			fired = true
-			enemy.take_damage(damage_rate * delta)
+			enemy.take_damage(damage_rate)
 			break
 	
 	if fired:
