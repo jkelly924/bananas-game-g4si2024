@@ -87,10 +87,10 @@ func begin_round(round: int) -> void:
 		if enemy_difficulties[enemy_level] <= difficulty:
 			difficulty -= enemy_difficulties[enemy_level]
 			total_enemy_count += 1
-			enemy_counts[enemy_level] += 1
+			enemy_counts[enemy_level] += 1	
 	
-	total_enemy_count -= TowerHandler.positive_towers
 	if total_enemy_count <= 0:
+		pass
 		# Vanessa put the end transition here 
 	
 	

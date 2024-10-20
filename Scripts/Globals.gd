@@ -1,13 +1,11 @@
 extends Node
 
-@warning_ignore("unused_signal")
-signal hpChanged(newHp, maxHp)
-@warning_ignore("unused_signal")
-signal budget_changed(newGold)
-@warning_ignore("unused_signal")
+signal health_changed(health: int)
+signal budget_changed(new_budget: int)
 signal waveStarted(wave_count, enemy_count)
-@warning_ignore("unused_signal")
 signal enemyDestroyed(remain)
+
+signal game_over()
 
 var tower_information = [
 	{
@@ -85,10 +83,15 @@ var tower_information = [
 var budget: int = 100
 var health: int = 10
 
+
 func award_budget(n: int) -> void:
 	budget += n
-	budget_changed.emit()
+	budget_changed.emit(budget)
 
 
 func take_damage() -> void:
-	print("YOU TOOK DAMGAE")
+	health -= 1
+	health_changed.emit(health)
+	
+	if health <= 0:
+		game_over.emit()
