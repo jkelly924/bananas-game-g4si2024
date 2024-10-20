@@ -8,6 +8,8 @@ signal enemyDestroyed(remain)
 signal game_over()
 signal game_won()
 
+signal final_enemy_death()
+
 var tower_information = [
 	{
 		name = "Sprinkler",
