@@ -61,7 +61,6 @@ func _process(delta: float) -> void:
 	sprite.flip_h = !path_follow.position.x - position.x > 0
 	self.position = path_follow.position
 	progress_bar.position = get_global_transform_with_canvas().get_origin() + progress_bar_offset
-	#print(path_follow.progress)
 
 func handle_death():
 	get_parent().remove_child(self) # Deletes itself when it dies

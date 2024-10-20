@@ -4,9 +4,9 @@ var round_running: bool = false
 var current_round: int = 1
 
 var enemy_scene
-var enemies: Node2D
 
 @onready var spawn_timer: Timer = $SpawnTimer
+@onready var enemies = owner.get_node("Enemies")
 
 var sum_enemy_difficulty: int
 var enemy_difficulties: Array[int] = [1, 2, 4]
@@ -66,26 +66,35 @@ func weighted_random(enemy_probabilities: Array[float]) -> int:
 	return 0
 
 
+func on_start_of_round(enemy_count: int) -> void:
+	print("Starting wave with n enemies: ", enemy_count)
+	enemies.on_new_round(enemy_count)
+
+
 func on_end_of_round() -> void:
 	Globals.money += current_round * 100
 	current_round += 1
 
 
 func begin_round(round: int) -> void:
-	print("Beginning Wave: ", round)
 	round_running = true
+	print("Beginning Wave: ", round)
 	
 	var difficulty: int = get_difficulty_score(round)
 	
 	var enemy_counts: Array[int]= Array([], TYPE_INT, "", null)
 	enemy_counts.resize(enemy_difficulties.size())
 	
+	var total_enemy_count: int = 0
 	var enemy_probabilities: Array[float] = get_enemy_probabilities(round)
 	while difficulty >= 1:
 		var enemy_level: int = weighted_random(enemy_probabilities)
 		if enemy_difficulties[enemy_level] <= difficulty:
 			difficulty -= enemy_difficulties[enemy_level]
+			total_enemy_count += 1
 			enemy_counts[enemy_level] += 1
+	
+	on_start_of_round(total_enemy_count)
 	
 	print(enemy_counts)
 	for enemy_level: int in enemy_counts.size():
@@ -100,9 +109,6 @@ func begin_round(round: int) -> void:
 func _ready() -> void:
 	for enemy_level: int in enemy_difficulties.size():
 		sum_enemy_difficulty += enemy_difficulties[enemy_level]
-	
-	var root_node: Node2D = get_tree().get_root().get_node('test_level')
-	enemies = root_node.get_node('Enemies')
 	
 	enemy_scene = preload("res://Entities/Enemy.tscn")
 
