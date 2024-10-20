@@ -1,4 +1,4 @@
-HOSTILE ARCHITECTURE 
+## HOSTILE ARCHITECTURE 
 
 a game by Team Bananas
 ------------------------------
