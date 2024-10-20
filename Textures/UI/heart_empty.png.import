@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn7g1nj3efuig"
-path="res://.godot/imported/food_bank.png-209bd6b9ae7948ce5ba5591b7bb63bdd.ctex"
+uid="uid://duokvit4enj24"
+path="res://.godot/imported/heart_empty.png-26d4dde576203d0238e64e8e2688b960.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tower/food_bank.png"
-dest_files=["res://.godot/imported/food_bank.png-209bd6b9ae7948ce5ba5591b7bb63bdd.ctex"]
+source_file="res://Textures/UI/heart_empty.png"
+dest_files=["res://.godot/imported/heart_empty.png-26d4dde576203d0238e64e8e2688b960.ctex"]
 
 [params]
 

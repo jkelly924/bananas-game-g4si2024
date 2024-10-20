@@ -67,7 +67,7 @@ func on_start_of_round(enemy_count: int) -> void:
 
 
 func on_end_of_round() -> void:
-	Globals.money += current_round * 100
+	Globals.award_budget(current_round * 100)
 	current_round += 1
 
 
@@ -103,8 +103,10 @@ func begin_round(round: int) -> void:
 		
 		
 	if enemy_counts[2] <= 0:
+
 		pass
 		# Vanessa put the end transition here 
+		pass
 	
 	
 	on_start_of_round(total_enemy_count)
