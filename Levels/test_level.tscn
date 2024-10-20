@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=13 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_adipd"]
@@ -43,6 +43,9 @@ script = ExtResource("1_adipd")
 
 [node name="Towers" type="Node2D" parent="."]
 
+[node name="tower" parent="Towers" instance=ExtResource("2_yrywt")]
+damage_range = 10.0
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
 scale = Vector2(1.125, 1.125)
@@ -64,7 +67,6 @@ script = ExtResource("3_5b40h")
 curve = SubResource("Curve2D_o0ayj")
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HUD" type="Control" parent="UI"]
 layout_mode = 3
@@ -77,6 +79,7 @@ mouse_filter = 2
 script = ExtResource("4_jdq3b")
 
 [node name="TurretsPanel" type="PanelContainer" parent="UI/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -90,6 +93,7 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -130,6 +134,7 @@ text = "Start Round"
 icon = SubResource("ImageTexture_ija4m")
 
 [node name="Control" type="Control" parent="UI/HUD"]
+visible = false
 anchors_preset = 0
 offset_left = 1620.0
 offset_right = 1920.0
@@ -177,6 +182,7 @@ texture_normal = ExtResource("5_7y2mf")
 stretch_mode = 0
 
 [node name="user_interface" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="right_panel" type="ColorRect" parent="user_interface"]
 anchors_preset = -1
