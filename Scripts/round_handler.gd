@@ -67,7 +67,7 @@ func on_start_of_round(enemy_count: int) -> void:
 
 
 func on_end_of_round() -> void:
-	Globals.money += current_round * 100
+	Globals.award_budget(current_round * 100)
 	current_round += 1
 
 

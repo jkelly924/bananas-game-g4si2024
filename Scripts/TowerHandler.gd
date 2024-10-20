@@ -10,8 +10,6 @@ static var positive_towers: int =0
 
 func _ready() -> void:
 	towers_node = self
-	#create_tower("sprinkler", Vector2(100, 100))
-	#create_tower("speaker", Vector2(150, 150))
 	create_tower("house", Vector2(150, 150))
 
 
