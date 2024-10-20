@@ -14,12 +14,21 @@ var shop_button_scene = load("res://UI/shop_button.tscn")
 func _on_budget_changed():
 	budget_label.text = "Tax Dollars: " + str(Globals.budget)
 
+# lose screen 
+var lose_screen = preload("res://Levels/lose_screen.tscn").instantiate()
+func _on_game_lost():
+	get_tree().current_scene.add_child(lose_screen)
 
 func _on_health_changed(health: int):
 	for i in range(10, health, -1):
+		if health == 0:
+			#get_tree().change_scene_to_file("res://Levels/lose_screen.tscn")
+			Globals.game_over.emit()
+			get_tree().current_scene.add_child(lose_screen)
+			return
 		var heart = hearts_group.get_node(str(i - 1)).get_node("TextureRect")
 		heart.texture = empty_heart
-
+	
 
 func begin_preview_dragging(tower_id: String) -> void:
 	pass
