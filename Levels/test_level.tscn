@@ -69,12 +69,17 @@ func _on_pressed() -> void:
 "
 
 [node name="test_level" type="Node2D"]
+position = Vector2(-1933, 117)
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("3_5b40h")
 
 [node name="Towers" type="Node2D" parent="."]
 script = ExtResource("2_1dmw7")
+
+[node name="Speaker" parent="Towers" instance=ExtResource("2_e00ya")]
+z_index = 1
+position = Vector2(334, 51)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
@@ -93,6 +98,7 @@ script = ExtResource("3_5b40h")
 [node name="SpawnTimer" type="Timer" parent="Rounds"]
 
 [node name="RoundTimer" type="Timer" parent="Rounds"]
+visible = false
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_o0ayj")
