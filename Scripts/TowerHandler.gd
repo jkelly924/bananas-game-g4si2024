@@ -6,6 +6,8 @@ static var towers_node: Node
 
 func _ready() -> void:
 	towers_node = self
+	create_tower("Radius", "sprinkler", Vector2(100, 100))
+
 
 # Sample Usage: create_tower("radius", "sprinkler", Vector2(100, 100))
 static func create_tower(type: String, name: String, position: Vector2) -> void:

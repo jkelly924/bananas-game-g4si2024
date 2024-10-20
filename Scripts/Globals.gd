@@ -12,8 +12,8 @@ signal enemyDestroyed(remain)
 var tower_radius_stats = {
 	"sprinkler": {
 		damage = 1,
-		range = 2,
-		cooldown = 3,
+		range = 20,
+		cooldown = 0.1,
 	},
 	"bullets": {
 		damage = 1,
