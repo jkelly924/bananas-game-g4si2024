@@ -8,8 +8,8 @@ static var slowing_towers: Array[Node]
 
 func _ready() -> void:
 	towers_node = self
-	create_tower("sprinkler", Vector2(100, 100))
-	create_tower("speaker", Vector2(150, 150))
+	#create_tower("sprinkler", Vector2(100, 100))
+	#create_tower("speaker", Vector2(150, 150))
 
 
 static func create_tower(name: String, position: Vector2) -> void:
