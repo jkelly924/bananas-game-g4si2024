@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwbatot2lh4p"]
+
+[ext_resource type="Script" path="res://Scripts/menu_transition.gd" id="1_eyj77"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_eyj77")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="rolling" type="Node" parent="."]
+
+[node name="0" type="Label" parent="rolling"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1005.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "These are the end times..."
+horizontal_alignment = 1
+
+[node name="1" type="Label" parent="rolling"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 150.0
+offset_bottom = -855.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "The homeless have taken over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="Label" parent="rolling"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 300.0
+offset_bottom = -705.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "We humans are out-numbered"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Label" parent="rolling"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 450.0
+offset_bottom = -555.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "YOU are our last hope"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Label" parent="rolling"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 600.0
+offset_bottom = -405.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "DEAL WITH THEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RollingDone" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="RollingDone" to="." method="_on_rolling_done_timeout"]

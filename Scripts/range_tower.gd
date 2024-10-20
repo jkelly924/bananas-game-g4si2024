@@ -1,6 +1,8 @@
 extends Node2D
 class_name Tower
 
+var tower_name: String
+
 var damage: float
 var range: float
 var cooldown: float
@@ -15,6 +17,7 @@ static func create(type: String, name: String, position: Vector2) -> Node:
 
 
 func initialize_params(type: String, name: String, position: Vector2) -> void:
+	tower_name = name
 	damage = Globals.tower_radius_stats[name].damage
 	range = Globals.tower_radius_stats[name].range
 	cooldown = Globals.tower_radius_stats[name].cooldown
@@ -43,6 +46,5 @@ func _process(delta: float) -> void:
 	
 	var enemy: Node = get_first_valid_enemy()
 	if enemy:
-		print("Shooting")
 		enemy.take_damage(damage)
 		last_fire_time = Time.get_ticks_msec() / 1000

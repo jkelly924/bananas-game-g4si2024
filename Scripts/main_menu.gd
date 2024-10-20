@@ -10,7 +10,7 @@ var credits_background_texture: Texture = load("res://Textures/MainMenu/credits.
 
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/test_level.tscn")
+	get_tree().change_scene_to_file("res://Levels/MenuTransition.tscn")
 
 
 func _on_credits_button_pressed() -> void:
