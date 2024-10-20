@@ -67,7 +67,7 @@ static func get_furthest_enemy_index(start: int = 0) -> int:
 
 
 static func register_enemy_death(id: String) -> void:
-	id_to_enemy[id] = null
+	id_to_enemy.erase(id)
 	var index: int = active_enemy_ids.find(id)
 	if (index != -1):
 		active_enemy_ids[index] = ""

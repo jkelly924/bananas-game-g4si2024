@@ -87,6 +87,19 @@ var budget: int = 100
 var health: int = 10
 
 
+func _ready():
+	game_won.connect(_on_game_won)
+	game_over.connect(_on_game_over)
+
+
+func _on_game_over():
+	get_tree().change_scene_to_file("res://Levels/lose_screen.tscn")
+
+
+func _on_game_won():
+	get_tree().change_scene_to_file("res://Levels/win_screen.tscn")
+
+
 func award_budget(n: int) -> void:
 	budget += n
 	budget_changed.emit(budget)

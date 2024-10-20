@@ -69,11 +69,7 @@ func on_start_of_round(enemy_count: int) -> void:
 func on_end_of_round() -> void:
 	Globals.award_budget(current_round * 100)
 	current_round += 1
-	
-# win screen 
-var win_screen = preload("res://Levels/win_screen.tscn").instantiate()
-func _on_game_won():
-	get_tree().current_scene.add_child(win_screen)
+
 
 func begin_round(round: int) -> void:
 	if round_running:
@@ -107,6 +103,7 @@ func begin_round(round: int) -> void:
 		if count == 0:
 			break
 
+	# win when enemies reach 0
 	if enemy_counts[0] + enemy_counts[1] + enemy_counts[2] == 0:
 		Globals.game_won.emit()
 		return
