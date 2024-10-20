@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqogty2lb3oni"]
+[gd_scene load_steps=3 format=3 uid="uid://dqogty2lb3oni"]
 
 [ext_resource type="SpriteFrames" uid="uid://c0cond1h8sd3l" path="res://Textures/Tower/spike/spikes.tres" id="1_1yo26"]
+[ext_resource type="Script" path="res://Scripts/spikes.gd" id="1_qj8iw"]
 
 [node name="Spikes" type="Node2D"]
+script = ExtResource("1_qj8iw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 sprite_frames = ExtResource("1_1yo26")
-frame = 4
-frame_progress = 1.0
