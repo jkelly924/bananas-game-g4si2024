@@ -6,18 +6,14 @@ extends Node2D
 # The distance in tiles that the damage will be applied. Increments in 1/16ths (one pixel).
 @export_range(0.0, 10.0, 1.0/144) var damage_range: float
 
+@export var damage_cooldown: float = 1.0
+
 var last_fire_time: float = 0
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print("Rate: ", damage_rate)
-	print("Range: ", damage_range)
-	pass # Replace with function body.
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Time.get_ticks_msec() / 1000 - last_fire_time < 1:
+	if Time.get_ticks_msec() / 1000 - last_fire_time < damage_cooldown:
 		return
 	
 	var fired: bool = false

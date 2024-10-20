@@ -41,8 +41,8 @@ static func get_furthest_enemy_index(start: int = 0) -> int:
 	return -1
 
 
-static func register_enemy_finished_path() -> void:
-	pass
+static func register_enemy_finished_path(id: String) -> void:
+	Globals.take_damage()
 
 
 static func on_new_round(enemy_count: int) -> void:

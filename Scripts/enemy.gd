@@ -1,6 +1,9 @@
 extends Node2D
 class_name Enemy
 
+static var path: Path2D
+static var path_length: float
+
 #@export_range(0,2) var starting_level: int = 0
 @export var walk_speed: float = 25
 
@@ -12,9 +15,7 @@ class_name Enemy
 @onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
 var progress_bar_offset: Vector2
 
-var path: Path2D
 var path_follow: PathFollow2D
-var last_progress: float = 0
 
 var sprite_variant: int
 var level_health: Array[int] = [level_0_health, level_1_health, level_2_health]
@@ -46,9 +47,11 @@ func adjust_to_level(new_level: int):
 
 
 func _ready() -> void:
+	path = get_tree().get_root().get_node("test_level").get_node("Path2D")
+	path_length = path.curve.get_baked_length()
+	
 	# Initializing object variables
 	progress_bar_offset = progress_bar.position
-	path = get_tree().get_root().get_node("test_level").get_node("Path2D")
 	path_follow = PathFollow2D.new()
 	path_follow.loop = false
 	path.add_child(path_follow)
@@ -62,12 +65,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	path_follow.progress += walk_speed * delta
-	if path_follow.progress < last_progress:
-		handle_death()
+	if dead:
 		return
-	else:
-		last_progress = path_follow.progress
+	
+	path_follow.progress += walk_speed * delta
+	if path_length - path_follow.progress <= 1:
+		handle_death()
+		EnemyHandler.register_enemy_finished_path(self.name)
+		return
 	
 	z_index = int(position.y)
 	sprite.flip_h = !path_follow.position.x - position.x > 0

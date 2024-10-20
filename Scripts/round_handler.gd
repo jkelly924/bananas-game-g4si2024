@@ -3,7 +3,7 @@ extends Node
 var round_running: bool = false
 var current_round: int = 1
 
-var enemy_scene
+var enemy_scene = preload("res://Entities/Enemy.tscn")
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var enemies = owner.get_node("Enemies")
@@ -19,11 +19,6 @@ func delay(time: float):
 
 func get_difficulty_score(round: int) -> int:
 	return min(int(6 * pow(1.15, round - 1)), 120) # No more than 120 enemies can be spawned
-
-
-func spawn_enemy(level: int) -> void:
-	var enemy = Enemy.create(level, "1")
-	enemies.add_child(enemy)
 
 
 func get_enemy_probabilities(round_number: int) -> Array[float]:
@@ -67,7 +62,7 @@ func weighted_random(enemy_probabilities: Array[float]) -> int:
 
 func on_start_of_round(enemy_count: int) -> void:
 	print("Starting wave with n enemies: ", enemy_count)
-	enemies.on_new_round(enemy_count)
+	EnemyHandler.on_new_round(enemy_count)
 
 
 func on_end_of_round() -> void:
@@ -108,8 +103,6 @@ func begin_round(round: int) -> void:
 func _ready() -> void:
 	for enemy_level: int in enemy_difficulties.size():
 		sum_enemy_difficulty += enemy_difficulties[enemy_level]
-	
-	enemy_scene = preload("res://Entities/Enemy.tscn")
 
 
 func _on_start_round_pressed() -> void:
