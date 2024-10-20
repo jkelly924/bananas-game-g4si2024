@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Towers/Scripts/shelter.gd" id="2_0g088"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("2_0g088")
 
 [node name="Shelter" type="Sprite2D" parent="."]
 position = Vector2(24, -15)
 texture = ExtResource("1_3pd5b")
-script = ExtResource("2_0g088")

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var disabled: bool = false
+
 @export var tower_name: String = "tent"
 
 

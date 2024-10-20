@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var disabled: bool = false
+
 @export var tower_name: String = "bench"
 
 @export var slowing_modifier: float = 0.75

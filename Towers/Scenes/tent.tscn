@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx6jkgeae66j"]
+[gd_scene load_steps=3 format=3 uid="uid://b4n8qn4h11efs"]
 
 [ext_resource type="Texture2D" uid="uid://s65ff1crk6i3" path="res://Textures/Tower/tent.png" id="1_2ugpa"]
-[ext_resource type="Script" path="res://Towers/Scenes/tent.gd" id="2_wa3mq"]
+[ext_resource type="Script" path="res://Towers/Scripts/tent.gd" id="2_wa3mq"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("2_wa3mq")
 
 [node name="Tent" type="Sprite2D" parent="."]
 position = Vector2(0, -17)
 texture = ExtResource("1_2ugpa")
-script = ExtResource("2_wa3mq")

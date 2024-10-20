@@ -25,15 +25,15 @@ func is_point_on_path(position: Vector2) -> bool:
 static func create_ghost(tower_name: String):
 	current_ghost_name = tower_name
 	current_ghost = load("res://Towers/Scenes/" + tower_name + ".tscn").instantiate()
+	towers_node.add_child(current_ghost)
 	current_ghost.z_index = 9999
 	current_ghost.disabled = true
-	towers_node.add_child(current_ghost)
 
 static func create_tower(tower_name: String, tower_position: Vector2) -> void:
 	var tower: Node = load("res://Towers/Scenes/" + tower_name + ".tscn").instantiate()
+	towers_node.add_child(tower)
 	tower.global_position = tower_position
 	tower.z_index = tower_position.y
-	towers_node.add_child(tower)
 	
 	if tower_name == "speaker" or tower_name == "bench":
 		slowing_towers.append(tower)
@@ -52,29 +52,29 @@ func _process(delta: float) -> void:
 	if current_ghost:
 		current_ghost.global_position = get_global_mouse_position()
 		if is_point_on_path(tile_map.to_local(current_ghost.global_position)):
-			if current_ghost_name == "spikes":
+			if current_ghost_name == "spike":
 				current_ghost.modulate = can_place_color
 				current_ghost.global_position = tile_map.to_global(tile_map.map_to_local(tile_map.local_to_map(tile_map.to_local(current_ghost.global_position))))
 			else:
 				current_ghost.modulate = cannot_place_color
 		else:
-			if current_ghost_name == "spikes":
-				current_ghost.module = cannot_place_color
+			if current_ghost_name == "spike":
+				current_ghost.modulate = cannot_place_color
 			else:
 				current_ghost.modulate = can_place_color
 		
 func _unhandled_input(event: InputEvent) -> void:
 	if current_ghost:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-			if is_point_on_path(get_global_mouse_position()):
-				if current_ghost_name == "spikes":
-					create_tower(current_ghost_name, get_global_mouse_position())
+			if is_point_on_path(tile_map.to_local(current_ghost.global_position)):
+				if current_ghost_name == "spike":
+					create_tower(current_ghost_name, current_ghost.global_position)
 					towers_node.remove_child(current_ghost)
 					current_ghost = null
 					current_ghost_name = ""
 			else:
-				if current_ghost_name != "spikes":
-					create_tower(current_ghost_name, get_global_mouse_position())
+				if current_ghost_name != "spike":
+					create_tower(current_ghost_name, current_ghost.global_position)
 					towers_node.remove_child(current_ghost)
 					current_ghost = null
 					current_ghost_name = ""

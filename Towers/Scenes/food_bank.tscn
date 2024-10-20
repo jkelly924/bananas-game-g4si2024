@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Towers/Scripts/food.gd" id="2_qxpyr"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("2_qxpyr")
 
 [node name="FoodBank" type="Sprite2D" parent="."]
 position = Vector2(41, -14)
 texture = ExtResource("1_x1x5g")
-script = ExtResource("2_qxpyr")
