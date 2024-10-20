@@ -1,26 +1,44 @@
 extends CanvasLayer
 
-const speed: int = 100
-const spacing: int = 150
+@export var fade_speed: int = 2
+@export var stay_duration: int = 3
 
-@onready var rolling: Node = $rolling
-@onready var RollingDone: Timer = $RollingDone
+@onready var timer: Timer = $Timer
 
-var labels: Array[Node]
+var labels: Array
+var current_label: int = 0
+var fade_direction: int = 1
 
-func _ready() -> void:
-	labels = rolling.get_children()
-	for i: int in labels.size():
-		labels[i].position = Vector2(0, 1080 + spacing * i)
+func on_timeout():
+	if fade_direction == -1:
+		current_label += 1
+		if current_label > len(labels) - 1:
+			get_tree().change_scene_to_file("res://Levels/test_level.tscn")
+			return
+		else:
+			fade_direction = 2
 	
-	RollingDone.wait_time = (1080 + len(labels) * spacing - 75 - 540) / speed
-	RollingDone.start()
+	fade_direction -= 1
+
+	if fade_direction == 0:
+		timer.wait_time = stay_duration
+	else:
+		timer.wait_time = fade_speed
+	
+	timer.start()
+	
+	
+		
+func _ready() -> void:
+	labels = get_node("ColorRect").get_children()
+	timer.one_shot = true
+	timer.wait_time = fade_speed
+	timer.start()
+	timer.timeout.connect(on_timeout)
 
 
 func _process(delta: float) -> void:
-	for label: Label in labels:
-		label.position -= Vector2(0, speed * delta)
-
-
-func _on_rolling_done_timeout() -> void:
-	get_tree().change_scene_to_file("res://Levels/test_level.tscn")
+	if fade_direction == 1:
+		labels[current_label].modulate = Color.from_hsv(0, 0, 1, (timer.wait_time - timer.time_left) / timer.wait_time)
+	elif fade_direction == -1:
+		labels[current_label].modulate = Color.from_hsv(0, 0, 1, timer.time_left / timer.wait_time)
