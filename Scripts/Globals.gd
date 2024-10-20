@@ -10,6 +10,7 @@ signal waveStarted(wave_count, enemy_count)
 signal enemyDestroyed(remain)
 
 var money: int = 100
+var health: int = 10
 
 var root_node: Window
 var towers_node: Node2D
@@ -23,3 +24,7 @@ func _ready():
 func give_money(n: int) -> void:
 	money += n
 	goldChanged.emit()
+
+
+func take_damage() -> void:
+	print("YOU TOOK DAMGAE")
