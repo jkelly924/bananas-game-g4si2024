@@ -18,7 +18,6 @@ static var current_ghost_name: String
 func _ready() -> void:
 	tile_map = get_parent().get_node("TileMapLayer")
 	towers_node = self
-	create_tower("house", Vector2(150, 150))
 
 func is_point_on_path(position: Vector2) -> bool:
 	return tile_map.get_cell_source_id(tile_map.local_to_map(position)) != -1 and tile_map.get_cell_atlas_coords(tile_map.local_to_map(position)).x != 0

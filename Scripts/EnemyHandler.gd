@@ -61,6 +61,15 @@ static func register_enemy_death(id: String) -> void:
 	var index: int = active_enemy_ids.find(id)
 	if (index != -1):
 		active_enemy_ids[index] = ""
+	
+	var found_existing: bool = false
+	for this_id: String in active_enemy_ids:
+		if this_id != "":
+			found_existing = true
+			break
+	
+	if not found_existing:
+		Globals.final_enemy_death.emit()
 
 
 static func register_enemy_finished_path(id: String) -> void:
@@ -68,8 +77,6 @@ static func register_enemy_finished_path(id: String) -> void:
 
 
 static func on_new_round(enemy_count: int) -> void:
-	for enemy_id: String in active_enemy_ids:
-		id_to_enemy[enemy_id] = null
-	
+	id_to_enemy = {}
 	active_enemy_ids = []
 	active_enemy_ids.resize(enemy_count)

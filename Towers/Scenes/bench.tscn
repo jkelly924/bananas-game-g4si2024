@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbd4xflsvtqyj"]
+
+[ext_resource type="Texture2D" uid="uid://cl3nmf4x1fjgl" path="res://Textures/Tower/bench/top.png" id="1_ysb4j"]
+[ext_resource type="Script" path="res://Towers/Scripts/bench.gd" id="2_mh56n"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Top" type="Sprite2D" parent="."]
+position = Vector2(3, -3)
+texture = ExtResource("1_ysb4j")
+script = ExtResource("2_mh56n")
