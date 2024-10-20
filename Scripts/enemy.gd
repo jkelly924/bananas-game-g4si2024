@@ -82,6 +82,7 @@ func _process(delta: float) -> void:
 
 func handle_death():
 	get_parent().remove_child(self) # Deletes itself when it dies
+	EnemyHandler.register_enemy_death(self.name)
 
 
 func take_damage(damage: float) -> void:

@@ -91,10 +91,12 @@ func begin_round(round: int) -> void:
 	on_start_of_round(total_enemy_count)
 	
 	print(enemy_counts)
+	var enemy_place: int = 0
 	for enemy_level: int in enemy_counts.size():
 		for i: int in range(enemy_counts[enemy_level]):
 			await delay(0.5)
-			EnemyHandler.create_enemy(enemy_level)
+			EnemyHandler.create_enemy(enemy_level, enemy_place)
+			enemy_place += 1
 	
 	on_end_of_round()
 	round_running = false
