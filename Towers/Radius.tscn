@@ -17,6 +17,10 @@ animations = [{
 [node name="tower" type="Node2D"]
 script = ExtResource("1_jolcq")
 damage_rate = 50.0
+<<<<<<< HEAD:Towers/Radius.tscn
+damage_range = 10.0
+=======
+>>>>>>> 11e4a42816586843e6428b852cf453b6e714ebb1:Entities/Tower.tscn
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
