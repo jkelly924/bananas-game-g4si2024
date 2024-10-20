@@ -3,6 +3,8 @@ class_name TowerHandler
 
 static var towers_node: Node
 
+static var slowing_towers: Array[Node]
+
 
 func _ready() -> void:
 	towers_node = self
@@ -13,3 +15,6 @@ func _ready() -> void:
 static func create_tower(type: String, name: String, position: Vector2) -> void:
 	var tower: Node = Tower.create(type, name, position)
 	towers_node.add_child(tower)
+	
+	if type == "slowing":
+		slowing_towers.append(tower)

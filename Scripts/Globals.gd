@@ -45,9 +45,6 @@ var tower_information = {
 		texture = load("res://Textures/Tower/police/bullet_tower.png"),
 		round_unlocked = 5
 	},
-	6: {
-		name = 
-	}
 }
 
 var tower_radius_stats = {
@@ -65,6 +62,22 @@ var tower_radius_stats = {
 		damage = 1,
 		range = 2,
 		cooldown = 3,
+	},
+	"speaker": {
+		damage = 1,
+		range = 2,
+		cooldown = 3,
+	}
+}
+
+var tower_slowing_stats = {
+	"bench": {
+		range = 1,
+		modifier = 0.33,
+	},
+	"speaker": {
+		range = 2,
+		modifier = 0.33,
 	}
 }
 

@@ -1,7 +1,7 @@
 extends Node2D
 class_name Tower
 
-var tower_name: String
+@export var tower_name: String
 
 var damage: float
 var range: float
