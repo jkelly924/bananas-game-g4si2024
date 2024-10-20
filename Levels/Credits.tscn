@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfn57wplcqugd"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_1hjx0"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_1hjx0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="credits_header" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="credits" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Mom - programmer
+Dad - Programmer
+Hipster - himself
+Jebediah - yeah
+Someone - ok
+Final person - mhm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exit_button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 30
+text = "BACK"
+
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
