@@ -238,13 +238,13 @@ color = Color(0.2376, 0.29676, 0.36, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="user_interface/side_panel/shop_panel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_prv8g")
-scroll_vertical_custom_step = 10.0
+horizontal_scroll_mode = 0
 
 [node name="GridContainer" type="GridContainer" parent="user_interface/side_panel/shop_panel/ScrollContainer"]
 layout_mode = 2
@@ -253,31 +253,31 @@ size_flags_vertical = 6
 columns = 2
 
 [node name="shop_button" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [node name="shop_button2" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [node name="shop_button3" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [node name="shop_button4" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [node name="shop_button5" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [node name="shop_button6" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [node name="shop_button7" parent="user_interface/side_panel/shop_panel/ScrollContainer/GridContainer" instance=ExtResource("8_5f4cs")]
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(212, 212)
 layout_mode = 2
 
 [connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_child_entered_tree"]

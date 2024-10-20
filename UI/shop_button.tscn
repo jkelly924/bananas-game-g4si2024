@@ -22,8 +22,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1664.0
-offset_bottom = -824.0
+offset_right = -1708.0
+offset_bottom = -868.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -87,7 +87,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ifpkr")
 expand_mode = 4
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="CashIcon" type="TextureRect" parent="Button/Background"]
 z_index = 1
