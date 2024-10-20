@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cam2n3o5ookil"]
+[gd_scene load_steps=13 format=4 uid="uid://cam2n3o5ookil"]
 
 [ext_resource type="Texture2D" uid="uid://dwt52fk84nvsb" path="res://Textures/test_atlas_texture.tres" id="1_0y4xf"]
 [ext_resource type="Script" path="res://Scripts/EnemyHandler.gd" id="1_adipd"]
@@ -66,9 +66,6 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_btxjb")
 script = ExtResource("1_adipd")
 
 [node name="Towers" type="Node2D" parent="."]
-
-[node name="tower" parent="Towers" instance=ExtResource("2_yrywt")]
-damage_range = 10.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 3
